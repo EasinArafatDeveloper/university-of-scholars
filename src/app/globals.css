@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply transition-colors duration-300;
+  }
+}
+
+:root {
+  --background: #fdfbf7;
+  --foreground: #0f141d;
+  --card: #faf6f0;
+  --card-border: rgba(197, 160, 89, 0.2);
+  --glow-color: rgba(197, 160, 89, 0.1);
+}
+
+.dark {
+  --background: #0f141d;
+  --foreground: #fdfbf7;
+  --card: rgba(22, 31, 48, 0.65);
+  --card-border: rgba(197, 160, 89, 0.1);
+  --glow-color: rgba(92, 6, 50, 0.15);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(253, 251, 247, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.dark .glass-panel {
+  background: rgba(15, 20, 29, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(197, 160, 89, 0.08);
+}
+
+.glass-card {
+  background: rgba(250, 246, 240, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(197, 160, 89, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .glass-card {
+  background: rgba(22, 31, 48, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(197, 160, 89, 0.05);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(92, 6, 50, 0.4);
+  box-shadow: 0 10px 30px -10px var(--glow-color);
+}
+
+.dark .glass-card:hover {
+  border-color: rgba(197, 160, 89, 0.3);
+  box-shadow: 0 10px 30px -10px var(--glow-color);
+}
+
+/* Glow Background Effects */
+.glow-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(92, 6, 50, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(197, 160, 89, 0.06) 0%, transparent 40%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dark .glow-mesh {
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(92, 6, 50, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(197, 160, 89, 0.08) 0%, transparent 50%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(197, 160, 89, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(92, 6, 50, 0.5);
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+/* Custom Masonry Layout Helpers */
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 20px;
+  grid-auto-flow: dense;
+}
+
