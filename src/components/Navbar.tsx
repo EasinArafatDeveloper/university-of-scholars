@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  ChevronDown, GraduationCap, BookOpen, Compass, X,
+  ChevronDown, GraduationCap, BookOpen, Compass, X, Search,
   Home, Phone, MapPin, Facebook, Youtube, Building2, Activity,
   Megaphone, HeartHandshake
 } from "lucide-react";
@@ -322,6 +322,7 @@ export default function Navbar() {
               {/* Extra links */}
               <Link href="/faculty" className={`text-sm font-semibold tracking-wide hover:text-crimson dark:hover:text-gold transition-colors duration-200 px-3 py-2 rounded-lg ${pathname === "/faculty" ? "text-crimson dark:text-gold" : "text-slate-700 dark:text-slate-300"}`}>Faculty</Link>
               <Link href="/research" className={`text-sm font-semibold tracking-wide hover:text-crimson dark:hover:text-gold transition-colors duration-200 px-3 py-2 rounded-lg ${pathname === "/research" ? "text-crimson dark:text-gold" : "text-slate-700 dark:text-slate-300"}`}>Research</Link>
+              <Link href="/labs" className={`text-sm font-semibold tracking-wide hover:text-crimson dark:hover:text-gold transition-colors duration-200 px-3 py-2 rounded-lg ${pathname === "/labs" ? "text-crimson dark:text-gold" : "text-slate-700 dark:text-slate-300"}`}>Labs</Link>
             </nav>
 
             {/* Quick Actions */}
@@ -390,6 +391,7 @@ export default function Navbar() {
                 })}
                 <Link href="/faculty" className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50">Faculty</Link>
                 <Link href="/research" className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50">Research</Link>
+                <Link href="/labs" className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50">Labs</Link>
                 <Link href="/contact" className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50">Contact</Link>
                 <div className="pt-2 border-t border-slate-200/30 dark:border-slate-800/30">
                   <Link href="/admission" className="block px-4 py-3 rounded-xl bg-crimson text-white text-sm font-bold text-center">

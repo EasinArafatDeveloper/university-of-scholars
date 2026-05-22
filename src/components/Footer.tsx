@@ -143,6 +143,7 @@ export default function Footer() {
               { label: "Notice Board", href: "/notices" },
               { label: "Faculty", href: "/faculty" },
               { label: "Research", href: "/research" },
+              { label: "Labs", href: "/labs" },
               { label: "Gallery", href: "/gallery" },
               { label: "Contact", href: "/contact" },
             ].map((l, i, arr) => (

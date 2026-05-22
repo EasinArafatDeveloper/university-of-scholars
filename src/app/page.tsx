@@ -4,7 +4,7 @@ import Link from "next/link";
 import { 
   ArrowRight, Users, BookOpen, GraduationCap, Award, Compass, Microscope, 
   ChevronRight, Calendar, ArrowUpRight, CheckCircle2, Play, Sparkles, Building, Globe,
-  ChevronLeft, UserCheck
+  ChevronLeft, UserCheck, Cpu, FlaskConical, Scissors
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -101,10 +101,62 @@ const leadershipData = [
   }
 ];
 
+const labTabsData = [
+  {
+    id: "cse",
+    name: "Computer Science Labs",
+    short: "CSE",
+    count: "4 Labs",
+    color: "from-cyan-500/10 to-blue-500/5 border-cyan-500/15 dark:border-cyan-500/10",
+    glowColor: "rgba(6, 182, 212, 0.2)",
+    icon: Microscope,
+    description: "Equipped for advanced programming, software engineering, network architectures, and future AI/Robotics sandboxes.",
+    list: ["Internet & Common Uses Lab", "Network Lab (Room 1204)", "Programming Lab", "Software Engineering Lab"],
+    iconColor: "text-cyan-500 dark:text-cyan-400"
+  },
+  {
+    id: "eee",
+    name: "Electrical & Electronic Labs",
+    short: "EEE",
+    count: "6 Labs",
+    color: "from-amber-500/10 to-orange-500/5 border-amber-500/15 dark:border-amber-500/10",
+    glowColor: "rgba(245, 158, 11, 0.2)",
+    icon: Cpu,
+    description: "Includes ground-floor Robotics Lab with robotic arms, heavy Power Protection Transformers, Machine Lab, and Microprocessor systems.",
+    list: ["Robotics & Control Lab", "Power Protection & Switchgear", "Electrical Circuit Lab", "Microprocessor Lab"],
+    iconColor: "text-amber-500 dark:text-amber-400"
+  },
+  {
+    id: "textile",
+    name: "Textile Engineering Labs",
+    short: "Textile",
+    count: "5 Labs",
+    color: "from-pink-500/10 to-rose-500/5 border-pink-500/15 dark:border-pink-500/10",
+    glowColor: "rgba(236, 72, 153, 0.2)",
+    icon: Scissors,
+    description: "Features specialized Yarn Manufacturing, circular Knitting machines, Wet Processing, Apparel manufacturing, and Quality Control systems.",
+    list: ["Yarn Manufacturing Lab", "Knitting Lab (Room 1204)", "Wet Processing Lab", "Apparel & Fashion Lab"],
+    iconColor: "text-pink-500 dark:text-pink-400"
+  },
+  {
+    id: "sciences",
+    name: "Chemistry & Physics Labs",
+    short: "Sciences",
+    count: "2 Labs",
+    color: "from-emerald-500/10 to-teal-500/5 border-emerald-500/15 dark:border-emerald-500/10",
+    glowColor: "rgba(16, 185, 129, 0.2)",
+    icon: FlaskConical,
+    description: "Equipped with safety apparatus, measuring flasks, and tools for undergraduate chemistry experiments and physics modules in Room 1404.",
+    list: ["Physics Experiment Lab", "Chemistry Analysis Lab", "Emergency Wash Station", "Safety Equipment Desk"],
+    iconColor: "text-emerald-500 dark:text-emerald-400"
+  }
+];
+
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeFaculty, setActiveFaculty] = useState(0);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [activeLabTab, setActiveLabTab] = useState("cse");
 
   // Autoplay slider logic (6 seconds duration)
   useEffect(() => {
@@ -617,40 +669,121 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5 space-y-6">
             <span className="text-xs font-bold tracking-widest text-crimson dark:text-gold uppercase">Pioneering Science</span>
-            <h2 className="font-serif font-bold text-3xl sm:text-5xl text-navy-950 dark:text-white leading-tight">Academic Excellence</h2>
+            <h2 className="font-serif font-bold text-3xl sm:text-5xl text-navy-950 dark:text-white leading-tight">Academic Labs</h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-              We collaborate with global corporations (IBM, Intel) to provide sandbox laboratories focusing on IoT systems, bioinformatics, and smart city infrastructure. Our students write real-world publications.
+              We collaborate with global leaders to provide 18+ sandbox laboratories focusing on computer engineering, robotics, power systems, textile testing, and physics sciences. Our students learn by experimenting.
             </p>
-            <div className="space-y-2">
-              <div className="flex gap-2 items-center text-sm font-semibold text-slate-700 dark:text-slate-300">
-                <CheckCircle2 className="w-5 h-5 text-emerald-500" />
-                <span>18+ Sandbox laboratories equipped with high-end instruments</span>
+            <div className="space-y-3">
+              <div className="flex gap-2.5 items-center text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
+                <span>18+ fully-equipped labs across 4 main departments</span>
               </div>
-              <div className="flex gap-2 items-center text-sm font-semibold text-slate-700 dark:text-slate-300">
-                <CheckCircle2 className="w-5 h-5 text-emerald-500" />
-                <span>Mentorship from PhD researchers globally</span>
+              <div className="flex gap-2.5 items-center text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
+                <span>Modern machinery including robotic arms & power switchgears</span>
               </div>
             </div>
-            <Link href="/research" className="inline-flex items-center gap-2 text-crimson dark:text-gold font-bold text-sm hover:underline pt-2">
-              Explore Active Research Projects <ArrowUpRight className="w-4 h-4" />
-            </Link>
+            <div className="pt-2 flex flex-wrap gap-4 items-center">
+              <Link href="/labs" className="px-6 py-3 rounded-xl bg-crimson dark:bg-gold text-white dark:text-navy-950 text-sm font-bold shadow-lg hover:scale-105 transition-transform flex items-center gap-2">
+                Explore All 18+ Labs <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/research" className="inline-flex items-center gap-1.5 text-slate-600 dark:text-slate-400 font-bold text-sm hover:underline">
+                Active Research Projects <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
 
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="p-6 rounded-2xl bg-gradient-to-b from-crimson/10 to-crimson/5 border border-crimson/10 space-y-4">
-              <Microscope className="w-10 h-10 text-crimson dark:text-gold" />
-              <h4 className="font-bold text-slate-900 dark:text-white text-base">Bioinformatics Lab</h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                Analyzing custom genomics sequences to develop modern predictive models using Deep Learning pipelines.
-              </p>
+          <div className="lg:col-span-7 space-y-6">
+            {/* Tab Selector */}
+            <div className="flex flex-wrap gap-2 p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50">
+              {labTabsData.map((tab) => {
+                const TabIcon = tab.icon;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveLabTab(tab.id)}
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 ${
+                      activeLabTab === tab.id
+                        ? "bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-md border border-slate-200/20"
+                        : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-350"
+                    }`}
+                  >
+                    <TabIcon className={`w-3.5 h-3.5 ${activeLabTab === tab.id ? tab.iconColor : "text-slate-400"}`} />
+                    <span>{tab.short}</span>
+                  </button>
+                );
+              })}
             </div>
-            <div className="p-6 rounded-2xl bg-gradient-to-b from-gold/10 to-gold/5 border border-gold/10 space-y-4">
-              <Building className="w-10 h-10 text-gold" />
-              <h4 className="font-bold text-slate-900 dark:text-white text-base">Smart IoT Labs</h4>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                Developing mesh network sensor modules for micro-grid automation and environmental monitoring.
-              </p>
-            </div>
+
+            {/* Tab Content Display */}
+            {labTabsData.map((tab) => {
+              if (tab.id !== activeLabTab) return null;
+              const ActiveIcon = tab.icon;
+              return (
+                <motion.div
+                  key={tab.id}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.4 }}
+                  className={`p-6 sm:p-8 rounded-3xl border bg-gradient-to-b ${tab.color} shadow-2xl relative overflow-hidden`}
+                >
+                  {/* Glowing background spot */}
+                  <div
+                    className="absolute -top-1/4 -right-1/4 w-60 h-60 rounded-full blur-[70px] pointer-events-none opacity-40"
+                    style={{ background: tab.glowColor }}
+                  />
+
+                  <div className="relative z-10 space-y-6">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className={`p-3 rounded-2xl bg-white/10 dark:bg-slate-900/60 border border-white/10 ${tab.iconColor}`}>
+                          <ActiveIcon className="w-6 h-6" />
+                        </div>
+                        <div>
+                          <h3 className="font-serif font-extrabold text-xl text-slate-900 dark:text-white leading-tight">
+                            {tab.name}
+                          </h3>
+                          <span className="text-[10px] font-mono tracking-widest text-slate-400 dark:text-slate-500 uppercase mt-0.5 block">
+                            Department Facilities
+                          </span>
+                        </div>
+                      </div>
+                      <span className="px-3 py-1 rounded-full bg-white/10 dark:bg-slate-900/80 border border-white/15 text-xs font-mono font-bold text-slate-800 dark:text-slate-200">
+                        {tab.count}
+                      </span>
+                    </div>
+
+                    <p className="text-slate-600 dark:text-slate-350 text-sm leading-relaxed">
+                      {tab.description}
+                    </p>
+
+                    <div className="space-y-2.5">
+                      <h4 className="text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase">
+                        Featured Laboratories
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {tab.list.map((item, idx) => (
+                          <div key={idx} className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
+                            <span className="w-1.5 h-1.5 rounded-full bg-gold/70 shrink-0" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-2 border-t border-slate-200/20 dark:border-slate-800/30 flex items-center justify-between">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase">
+                        Hands-on Learning
+                      </span>
+                      <Link href={`/labs?tab=${tab.id}`} className="text-xs font-bold text-crimson dark:text-gold hover:underline flex items-center gap-1">
+                        View Full Details <ChevronRight className="w-4.5 h-4.5" />
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
