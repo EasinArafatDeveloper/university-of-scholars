@@ -49,7 +49,7 @@ export default function RootLayout({
           <Footer />
 
           {/* Mobile nav spacer — only on small screens, pushes content above fixed bottom nav */}
-          <div className="h-16 lg:hidden" />
+          <div className="h-16 xl:hidden" />
 
           {/* Sticky Mobile bottom navigation */}
           <MobileNav />

@@ -8,74 +8,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const heroSlides = [
-  {
-    badge: "Empowering Global Scholars & Innovators",
-    titleStart: "Where Brilliance Meets ",
-    titleAccent: "Opportunity",
-    description: "The University of Scholars (IUS) is a leading global education community. We offer advanced research environments, internationally accredited programs, and modern digital ecosystems designed to accelerate your corporate and academic future.",
-    applyLink: "/admission",
-    exploreLink: "/programs",
-    image: "/campus_hero.png",
-    floatingStatIcon: Microscope,
-    floatingStatTitle: "18+ Research Labs",
-    floatingStatCategory: "Innovation",
-    floatingScholarship: "Up to 100% Scholarship",
-    floatingScholarshipSub: "Eligibility Checker Available",
-    floatingRate: "94% Placement Rate",
-    spotlightColor: "rgba(197, 160, 89, 0.22)", // Gold/Amber glow
-    accreditations: [
-      { text: "Helsinki MoU", type: "Global" },
-      { text: "Bloomberg Terminal", type: "FinTech" },
-      { text: "IEB Accredited", type: "Engineering" },
-      { text: "BCS Corporate Member", type: "Computing" }
-    ]
-  },
-  {
-    badge: "Pioneering Financial Technology & Business",
-    titleStart: "Fostering Next-Gen ",
-    titleAccent: "Global Leaders",
-    description: "Our School of Business equips students with modern analytical expertise. Engage with real-time Bloomberg Terminals, compete in global venture challenges, and benefit from intensive incubator programs.",
-    applyLink: "/admission",
-    exploreLink: "/programs?level=undergrad",
-    image: "/business_lab.png",
-    floatingStatIcon: Award,
-    floatingStatTitle: "Venture Seed Fund",
-    floatingStatCategory: "Entrepreneurship",
-    floatingScholarship: "Bloomberg Certifications",
-    floatingScholarshipSub: "Integrated with coursework",
-    floatingRate: "IEB & AMBA Aligned",
-    spotlightColor: "rgba(92, 6, 50, 0.32)", // Crimson glow
-    accreditations: [
-      { text: "AACSB Member Path", type: "Business" },
-      { text: "Bloomberg Trading", type: "Finance" },
-      { text: "CSE/BBA Interdisciplinary", type: "Tech" },
-      { text: "Global Internships", type: "Industry" }
-    ]
-  },
-  {
-    badge: "World-Class Facilities & Vibrant Campus Life",
-    titleStart: "Your Gateway to ",
-    titleAccent: "Academic Excellence",
-    description: "Step into an inspiring Scandinavian-designed learning ecosystem. With a double-height central library, digital classrooms, state-of-the-art labs, and diverse student clubs, campus life is rich and rewarding.",
-    applyLink: "/admission#apply",
-    exploreLink: "/about#campus",
-    image: "/library.png",
-    floatingStatIcon: BookOpen,
-    floatingStatTitle: "100k+ Digital Volumes",
-    floatingStatCategory: "Resources",
-    floatingScholarship: "2.5M+ Annual Waivers",
-    floatingScholarshipSub: "Need-based and Merit-based",
-    floatingRate: "15+ Cultural Clubs",
-    spotlightColor: "rgba(16, 185, 129, 0.22)", // Emerald/Mint glow
-    accreditations: [
-      { text: "24/7 Library Access", type: "Campus" },
-      { text: "Smart Amphitheaters", type: "Facilities" },
-      { text: "Hi-Speed WiFi Campus", type: "Connectivity" },
-      { text: "Secure Student Dorms", type: "Residential" }
-    ]
-  }
-];
+
 
 const leadershipData = [
   {
@@ -153,18 +86,9 @@ const labTabsData = [
 ];
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [activeFaculty, setActiveFaculty] = useState(0);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [activeLabTab, setActiveLabTab] = useState("cse");
-
-  // Autoplay slider logic (6 seconds duration)
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
 
   const stats = [
     { label: "Active Scholars", count: "12,000+", icon: Users, desc: "From 15+ countries" },
@@ -226,250 +150,89 @@ export default function Home() {
 
   return (
     <div className="space-y-24">
-      {/* A. Hero Section — Humane.com-Inspired Ambient Slider */}
-      <section className="relative w-full min-h-[80vh] overflow-hidden bg-[#090D16]">
+      {/* A. Hero Section — Background Video Hero Section */}
+      <section className="relative w-full min-h-[85vh] overflow-hidden bg-[#090D16] flex items-center">
 
-        {/* ── Atmospheric Ambient Spotlight (Humane-style pulsing glow) ── */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`spotlight-${currentSlide}`}
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.05 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute -top-1/4 -left-1/4 w-[90%] h-[140%] pointer-events-none rounded-full blur-[140px] mix-blend-screen z-10 opacity-70"
-            style={{
-              background: `radial-gradient(circle, ${heroSlides[currentSlide].spotlightColor} 0%, rgba(9, 13, 22, 0) 70%)`
-            }}
-          />
-        </AnimatePresence>
-
-        {/* ── Slide Background Images with Ken Burns effect and Radial Vignette Mask ── */}
-        <AnimatePresence mode="sync">
-          <motion.div
-            key={`bg-${currentSlide}`}
-            initial={{ opacity: 0, scale: 1.04 }}
-            animate={{ opacity: 0.85, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.4, ease: "easeInOut" }}
-            className="absolute inset-0 z-0 select-none pointer-events-none"
-            style={{
-              maskImage: "radial-gradient(circle at 78% 50%, black 20%, rgba(0, 0, 0, 0.4) 55%, transparent 88%)",
-              WebkitMaskImage: "radial-gradient(circle at 78% 50%, black 20%, rgba(0, 0, 0, 0.4) 55%, transparent 88%)",
-            }}
+        {/* ── Background Video ── */}
+        <div className="absolute inset-0 w-full h-full z-0 select-none pointer-events-none">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover opacity-35"
           >
-            <img
-              src={heroSlides[currentSlide].image}
-              alt="Campus"
-              className="w-full h-full object-cover"
-            />
-            {/* Top + bottom subtle vignette to blend with global nav */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#090D16] via-transparent to-[#090D16]/40" />
-          </motion.div>
-        </AnimatePresence>
-
-        {/* ── Auto-progress bar at top ── */}
-        <div className="absolute top-0 left-0 right-0 z-30 h-[2px] bg-white/5">
-          <motion.div
-            key={`progress-${currentSlide}`}
-            initial={{ width: "0%" }}
-            animate={{ width: "100%" }}
-            transition={{ duration: 6, ease: "linear" }}
-            className="h-full bg-gradient-to-r from-crimson via-gold to-gold"
-          />
+            <source src="/hero-bg.mp4" type="video/mp4" />
+            {/* Fallback image if video fails to load or hasn't been added yet */}
+            <img src="/campus_hero.png" alt="Campus Hero" className="w-full h-full object-cover opacity-50" />
+          </video>
+          {/* Dark gradient overlay to blend with global nav and ensure text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#090D16] via-[#090D16]/60 to-[#090D16]/40" />
         </div>
 
+        {/* ── Atmospheric Ambient Spotlight (glowing gradient) ── */}
+        <div
+          className="absolute -top-1/4 -left-1/4 w-[70%] h-[120%] pointer-events-none rounded-full blur-[140px] mix-blend-screen z-10 opacity-40"
+          style={{
+            background: `radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, rgba(9, 13, 22, 0) 70%)`
+          }}
+        />
+
         {/* ── Main Content ── */}
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 min-h-[80vh] flex flex-col justify-center">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center py-14 lg:py-12">
-
-            {/* Left: Text Content */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`text-${currentSlide}`}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
-                className="space-y-6"
-              >
-                {/* Badge: Minimal pill with glowing active dot */}
-                <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1, duration: 0.5 }}
-                  className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-white/80 text-[11px] font-semibold uppercase tracking-[0.18em] backdrop-blur-sm"
-                >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-gold" />
-                  </span>
-                  {heroSlides[currentSlide].badge}
-                </motion.div>
-
-                {/* Title */}
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.6 }}
-                  className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-extrabold text-white leading-[1.08] tracking-tight"
-                >
-                  {heroSlides[currentSlide].titleStart}
-                  <span className="bg-gradient-to-r from-gold via-amber-200 to-gold bg-clip-text text-transparent">
-                    {heroSlides[currentSlide].titleAccent}
-                  </span>
-                </motion.h1>
-
-                {/* Description */}
-                <motion.p
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.6 }}
-                  className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl font-normal"
-                >
-                  {heroSlides[currentSlide].description}
-                </motion.p>
-
-                {/* CTA Buttons */}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.5 }}
-                  className="flex flex-wrap gap-4 pt-2"
-                >
-                  <Link
-                    href={heroSlides[currentSlide].applyLink}
-                    className="group px-7 py-3.5 rounded-xl bg-crimson text-white font-semibold text-sm tracking-wide hover:bg-crimson-hover hover:shadow-[0_0_20px_rgba(92,6,50,0.4)] hover:scale-102 active:scale-98 transition-all duration-250 flex items-center gap-2"
-                  >
-                    Apply Online
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                  <Link
-                    href={heroSlides[currentSlide].exploreLink}
-                    className="px-7 py-3.5 rounded-xl bg-white/[0.03] backdrop-blur-md border border-white/10 text-white font-semibold text-sm tracking-wide hover:bg-white/10 hover:border-white/20 hover:scale-102 active:scale-98 transition-all duration-250 flex items-center gap-2"
-                  >
-                    <Play className="w-3.5 h-3.5 fill-white text-white" />
-                    Explore Programs
-                  </Link>
-                </motion.div>
-
-                {/* Accreditation tags */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                  className="flex flex-wrap gap-2 pt-4"
-                >
-                  {heroSlides[currentSlide].accreditations.map((acc, i) => (
-                    <span key={i} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 text-[10px] font-medium text-slate-400">
-                      <span className="w-1 h-1 rounded-full bg-gold/70" />
-                      {acc.text}
-                    </span>
-                  ))}
-                </motion.div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Right: Floating Glass Stat Cards */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`cards-${currentSlide}`}
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -10 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="hidden lg:flex flex-col gap-5 items-end"
-              >
-                {/* Card 1 */}
-                <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="bg-white/[0.03] backdrop-blur-xl border border-white/10 p-5 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex items-center gap-4 w-64 hover:border-white/20 transition-colors"
-                >
-                  <div className="p-3 rounded-xl bg-crimson/20 border border-crimson/30 text-crimson-hover dark:text-pink-300">
-                    {React.createElement(heroSlides[currentSlide].floatingStatIcon, { className: "w-5.5 h-5.5" })}
-                  </div>
-                  <div>
-                    <p className="text-[9px] uppercase font-bold tracking-widest text-gold">{heroSlides[currentSlide].floatingStatCategory}</p>
-                    <p className="text-sm font-bold text-white mt-0.5">{heroSlides[currentSlide].floatingStatTitle}</p>
-                  </div>
-                </motion.div>
-
-                {/* Card 2 */}
-                <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="bg-white/[0.03] backdrop-blur-xl border border-white/10 p-5 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] w-72 hover:border-white/20 transition-colors"
-                >
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-                    </span>
-                    <span className="text-[9px] font-bold text-emerald-400 uppercase tracking-widest">Active Waivers</span>
-                  </div>
-                  <p className="text-sm font-bold text-white">{heroSlides[currentSlide].floatingScholarship}</p>
-                  <p className="text-[11px] text-slate-400 mt-1">{heroSlides[currentSlide].floatingScholarshipSub}</p>
-                </motion.div>
-
-                {/* Card 3 */}
-                <motion.div
-                  animate={{ y: [0, -6, 0] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                  className="bg-white/[0.03] backdrop-blur-xl border border-white/10 px-5 py-3 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex items-center gap-3 w-56 hover:border-white/20 transition-colors"
-                >
-                  <GraduationCap className="w-5 h-5 text-gold shrink-0" />
-                  <span className="text-xs font-bold text-white">{heroSlides[currentSlide].floatingRate}</span>
-                </motion.div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* ── Bottom Controls Bar ── */}
-          <div className="absolute bottom-6 left-4 right-4 sm:left-6 sm:right-6 lg:left-12 lg:right-12 flex items-center justify-between z-20">
-            {/* Slide counter */}
-            <div className="flex items-center gap-3">
-              <span className="text-2xl font-black font-mono text-white/90 tabular-nums leading-none">
-                {String(currentSlide + 1).padStart(2, "0")}
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full py-20 lg:py-32">
+          <div className="max-w-3xl space-y-6">
+            {/* Badge: Minimal pill with glowing active dot */}
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-white/80 text-[11px] font-semibold uppercase tracking-[0.18em] backdrop-blur-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gold" />
               </span>
-              <div className="w-8 h-px bg-white/20" />
-              <span className="text-xs font-mono text-white/30">
-                {String(heroSlides.length).padStart(2, "0")}
-              </span>
+              Empowering Global Scholars & Innovators
             </div>
 
-            {/* Dot indicators */}
-            <div className="flex items-center gap-1.5">
-              {heroSlides.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentSlide(i)}
-                  aria-label={`Go to slide ${i + 1}`}
-                  className={`rounded-full transition-all duration-300 ${
-                    currentSlide === i
-                      ? "w-8 h-2 bg-gold/90 shadow-lg shadow-gold/20"
-                      : "w-2 h-2 bg-white/20 hover:bg-white/40"
-                  }`}
-                />
+            {/* Title */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-extrabold text-white leading-[1.08] tracking-tight">
+              Where Brilliance Meets{" "}
+              <span className="bg-gradient-to-r from-gold via-amber-200 to-gold bg-clip-text text-transparent">
+                Opportunity
+              </span>
+            </h1>
+
+            {/* Description */}
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal">
+              The University of Scholars (IUS) is a leading global education community. We offer advanced research environments, internationally accredited programs, and modern digital ecosystems designed to accelerate your corporate and academic future.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4 pt-2">
+              <Link
+                href="/admission"
+                className="group px-7 py-3.5 rounded-xl bg-crimson text-white font-semibold text-sm tracking-wide hover:bg-crimson-hover hover:shadow-[0_0_20px_rgba(92,6,50,0.4)] hover:scale-102 active:scale-98 transition-all duration-250 flex items-center gap-2"
+              >
+                Apply Online
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="/programs"
+                className="px-7 py-3.5 rounded-xl bg-white/[0.03] backdrop-blur-md border border-white/10 text-white font-semibold text-sm tracking-wide hover:bg-white/10 hover:border-white/20 hover:scale-102 active:scale-98 transition-all duration-250 flex items-center gap-2"
+              >
+                Explore Programs
+              </Link>
+            </div>
+
+            {/* Accreditation tags */}
+            <div className="flex flex-wrap gap-2 pt-4">
+              {[
+                { text: "Helsinki MoU", type: "Global" },
+                { text: "Bloomberg Terminal", type: "FinTech" },
+                { text: "IEB Accredited", type: "Engineering" },
+                { text: "BCS Corporate Member", type: "Computing" }
+              ].map((acc, i) => (
+                <span key={i} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 text-[10px] font-medium text-slate-400">
+                  <span className="w-1 h-1 rounded-full bg-gold/70" />
+                  {acc.text}
+                </span>
               ))}
-            </div>
-
-            {/* Arrow buttons */}
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
-                className="w-10 h-10 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-md text-white/60 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200 flex items-center justify-center active:scale-95"
-                aria-label="Previous slide"
-              >
-                <ChevronLeft className="w-4.5 h-4.5" />
-              </button>
-              <button
-                onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
-                className="w-10 h-10 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-md text-white/60 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200 flex items-center justify-center active:scale-95"
-                aria-label="Next slide"
-              >
-                <ChevronRight className="w-4.5 h-4.5" />
-              </button>
             </div>
           </div>
         </div>

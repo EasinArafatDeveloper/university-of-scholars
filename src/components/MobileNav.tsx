@@ -17,7 +17,7 @@ export default function MobileNav() {
   ];
 
   return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg border-t border-slate-200/50 dark:border-slate-800/50 px-4 py-2 flex items-center justify-around shadow-2xl">
+    <div className="xl:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg border-t border-slate-200/50 dark:border-slate-800/50 px-4 py-2 flex items-center justify-around shadow-2xl">
       {menuItems.map((item) => {
         const Icon = item.icon;
         const isActive = pathname === item.href;

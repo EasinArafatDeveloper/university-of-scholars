@@ -253,7 +253,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden xl:flex items-center gap-1">
               {navOrder.map((key) => {
                 const menu = megaMenus[key];
                 const isActive = pathname.startsWith(menu.href) && (menu.href !== "/" || pathname === "/");
@@ -326,7 +326,7 @@ export default function Navbar() {
             </nav>
 
             {/* Quick Actions */}
-            <div className="hidden lg:flex items-center gap-3">
+            <div className="hidden xl:flex items-center gap-3">
               <Link
                 href="/admission"
                 className="relative overflow-hidden px-5 py-2.5 rounded-xl bg-gradient-to-r from-crimson to-crimson-hover text-white text-sm font-bold shadow-lg shadow-crimson/20 hover:shadow-crimson/30 hover:scale-105 active:scale-95 transition-all duration-200 group"
@@ -338,7 +338,7 @@ export default function Navbar() {
 
             {/* Mobile hamburger */}
             <button
-              className="lg:hidden p-2.5 rounded-xl hover:bg-slate-200/50 dark:hover:bg-slate-800/50 text-slate-700 dark:text-slate-300"
+              className="xl:hidden p-2.5 rounded-xl hover:bg-slate-200/50 dark:hover:bg-slate-800/50 text-slate-700 dark:text-slate-300"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
@@ -358,7 +358,7 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden overflow-hidden border-t border-slate-200/30 dark:border-slate-800/30 bg-cream dark:bg-navy-950"
+              className="xl:hidden overflow-hidden border-t border-slate-200/30 dark:border-slate-800/30 bg-cream dark:bg-navy-950"
             >
               <div className="px-4 py-4 space-y-1 max-h-[70vh] overflow-y-auto">
                 {navOrder.map((key) => {
