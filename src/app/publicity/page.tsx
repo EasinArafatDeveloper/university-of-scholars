@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -195,7 +195,7 @@ const tabs = [
 /* ─────────────────────────────────────────────
    PAGE COMPONENT
 ───────────────────────────────────────────── */
-export default function PublicityPage() {
+function PublicityContent() {
   const [activeTab, setActiveTab] = useState<"news" | "blogs" | "videos">("news");
   const [searchQuery, setSearchQuery] = useState("");
   const searchParams = useSearchParams();
@@ -639,5 +639,20 @@ export default function PublicityPage() {
         </AnimatePresence>
       </div>
     </div>
+  );
+}
+
+export default function PublicityPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#090D16] flex items-center justify-center text-white">
+        <div className="flex flex-col items-center gap-3">
+          <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-gold" />
+          <span className="text-sm font-semibold tracking-wider uppercase text-gold">Loading Publicity Hub...</span>
+        </div>
+      </div>
+    }>
+      <PublicityContent />
+    </Suspense>
   );
 }
