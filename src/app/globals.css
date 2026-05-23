@@ -145,3 +145,10 @@ body {
   grid-auto-flow: dense;
 }
 
+/* Modal Open state overlays spacing/stacking helper */
+body.modal-open header,
+body.modal-open button.fixed,
+body.modal-open div.fixed:not(.z-50) {
+  z-index: 30 !important;
+}
+

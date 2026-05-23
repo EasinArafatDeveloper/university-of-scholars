@@ -27,9 +27,10 @@ export default function Research() {
   ];
 
   const collaborations = [
-    { school: "KTH Royal Institute of Technology", country: "Sweden", topic: "Systems Architecture" },
-    { school: "University of Helsinki", country: "Finland", topic: "Clinical Genomics AI" },
-    { school: "National University of Singapore (NUS)", country: "Singapore", topic: "FinTech Protocols" }
+    { school: "Charles Darwin University", country: "Australia", topic: "Academic & Institutional Sharing" },
+    { school: "Lloyd Business School", country: "India", topic: "Business Education & Research Co-op" },
+    { school: "Reverie Power & Automation", country: "Bangladesh", topic: "EEE Industrial Apprenticeship" },
+    { school: "Wadhwani Foundation", country: "Global", topic: "Entrepreneurship & Employment Skills" },
   ];
 
   const papers = [

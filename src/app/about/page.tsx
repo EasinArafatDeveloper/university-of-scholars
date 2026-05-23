@@ -18,22 +18,22 @@ export default function About() {
 
   const leadership = {
     vc: {
-      name: "Prof. Dr. Mamunur Rashid",
-      title: "Vice Chancellor, IUS",
-      quote: "Our mission is to establish a learning system where technology, critical humanities, and active internship engagement build global readiness.",
-      bio: "Dr. Mamunur holds a PhD in Systems Engineering from KTH Royal Institute of Technology, Sweden, and has published 80+ articles in journals of high impact factors.",
+      name: "Prof. Dr. Enamul Basher",
+      title: "Vice Chancellor, University of Scholars",
+      quote: "A university is where knowledge is gathered, generated, and disseminated. Our mission is to provide degrees of International Standard with a commitment to uplift the status of the university.",
+      bio: "Prof. Dr. Enamul Basher is a renowned professor of Electrical and Electronic Engineering (EEE), having spent decades teaching and leading research at BUET (1983-2019) where he served as Professor, Head of the EEE Department, and Dean of the Faculty of EEE. He has also served as Chairman of the EEE Department at Stamford University Bangladesh, Professor in the EEE Department at the University of Asia Pacific (UAP), and Dean of the Faculty of Electrical and Computer Engineering at BAUST.",
     },
     founder: {
-      name: "S. M. M. Abdul Hamid",
-      title: "Founder, IUS Board of Trustees",
-      quote: "We set out to create a university that breaks from conventional rote academic formats, acting instead as a startup hub for research.",
-      bio: "An industrialist and tech philanthropist, Abdul Hamid has financed numerous educational initiatives in South Asia and Scandinavia.",
+      name: "Abdul Hasib Siddique",
+      title: "Chief Coordinating Officer, Board of Trustees",
+      quote: "We set out to create a university that breaks from conventional rote academic formats, acting instead as a hub for industry-ready skills.",
+      bio: "An educator and administrator, Abdul Hasib coordinates the operations and industry collaboration networks for the university.",
     },
     chairman: {
-      name: "Engr. Taslim Al-Jubayer",
+      name: "Admiral M. Farid Habib (Retd)",
       title: "Chairman, Board of Trustees",
-      quote: "We investments in high-end labs, AI centers, and Bloomberg terminals because we believe scholars learn by doing.",
-      bio: "Graduated from MIT in Civil Infrastructure, Taslim has spearheaded major green energy projects globally.",
+      quote: "It was always my desire to create a University for students where the quality of education is always given more priority than any other things. We want our students to be active and innovative.",
+      bio: "Admiral Muhammad Farid Habib (Retd) is the Chairman of the Board of Trustees at the University of Scholars. He is the former Chief of Staff of the Bangladesh Navy (2013-2016). He received basic naval training at Britannia Royal Naval College, Dartmouth, UK, and was awarded the 'Silver Tiger' scouts award, 'The Bangladesh Navy Medal', and 'The Bangladesh Coast Guard Medal' for his outstanding contributions.",
     }
   };
 

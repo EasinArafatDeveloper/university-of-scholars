@@ -20,12 +20,25 @@ const megaMenus = {
         icon: Building2,
         links: [
           { name: "About IUS", href: "/about" },
-          { name: "Vision & Mission", href: "/about#mission" },
-          { name: "Message from VC", href: "/about#vc" },
-          { name: "Accreditations", href: "/about#accreditations" },
-          { name: "Campus Facilities", href: "/about#campus" },
+          { name: "Vision & Mission", href: "/about/vision-mission" },
+          { name: "Accreditations", href: "/about/accreditations" },
+          { name: "Campus Facilities", href: "/about/facilities" },
+          { name: "Legislative Documents", href: "/about/documents" },
+          { name: "Working in Scholars", href: "/about/career" },
         ]
       },
+      {
+        title: "Leadership",
+        icon: GraduationCap,
+        links: [
+          { name: "Board of Trustees", href: "/about/board-of-trustees" },
+          { name: "Chancellor", href: "/about/chancellor" },
+          { name: "Message from VC", href: "/about/vc" },
+          { name: "Pro-Vice Chancellor", href: "/about/pro-vc" },
+          { name: "Treasurer", href: "/about/treasurer" },
+          { name: "Standing Committees", href: "/about/committees" },
+        ]
+      }
     ]
   },
   admission: {
@@ -36,11 +49,11 @@ const megaMenus = {
         title: "Admission",
         icon: GraduationCap,
         links: [
-          { name: "Admission Requirements", href: "/admission#requirements" },
-          { name: "Tuition Fees", href: "/admission#fees" },
-          { name: "Admission Procedure", href: "/admission#procedure" },
-          { name: "Admission Contact", href: "/admission#contact" },
-          { name: "Scholarships", href: "/admission#scholarships" },
+          { name: "Admission Requirements", href: "/admission/requirements" },
+          { name: "Tuition Fees", href: "/admission/fees" },
+          { name: "Admission Procedure", href: "/admission/procedure" },
+          { name: "Admission Contact", href: "/admission/contact" },
+          { name: "Scholarships", href: "/admission/scholarships" },
         ]
       },
     ]
@@ -54,24 +67,38 @@ const megaMenus = {
         icon: BookOpen,
         links: [
           { name: "Computer Science & Eng. (B.Sc.)", href: "/programs?level=undergrad" },
+          { name: "Electrical & Electronic Eng. (B.Sc.)", href: "/programs?level=undergrad" },
+          { name: "Textile Engineering (B.Sc.)", href: "/programs?level=undergrad" },
           { name: "Business Administration (BBA)", href: "/programs?level=undergrad" },
-          { name: "Electrical & Electronic Eng.", href: "/programs?level=undergrad" },
-          { name: "Pharmacy (B.Pharm)", href: "/programs?level=undergrad" },
-          { name: "Law & Justice (LLB)", href: "/programs?level=undergrad" },
+          { name: "B.A. in English", href: "/programs?level=undergrad" },
         ]
       },
       {
         title: "Postgraduate",
         icon: Compass,
         links: [
-          { name: "Master of Business Admin (MBA)", href: "/programs?level=postgrad" },
-          { name: "M.Sc. in Computer Science", href: "/programs?level=postgrad" },
-          { name: "Master of Laws (LLM)", href: "/programs?level=postgrad" },
+          { name: "Master of Business Admin (MBA / EMBA)", href: "/programs?level=postgrad" },
           { name: "View All Programs →", href: "/programs" },
         ]
       },
     ]
   },
+  academics: {
+    label: "Academics",
+    href: "/faculty",
+    columns: [
+      {
+        title: "Faculty & Research",
+        icon: GraduationCap,
+        links: [
+          { name: "Faculty Directory", href: "/faculty" },
+          { name: "Research Hub", href: "/research" },
+          { name: "Academic Labs", href: "/labs" },
+        ]
+      }
+    ]
+  },
+
   administration: {
     label: "Administration",
     href: "/administration",
@@ -171,7 +198,7 @@ export default function Navbar() {
     leaveTimer.current = setTimeout(() => setActiveMegaMenu(null), 150);
   };
 
-  const navOrder: MegaKey[] = ["about", "admission", "programs", "administration", "activities", "publicity"];
+  const navOrder: MegaKey[] = ["about", "admission", "programs", "academics", "administration", "activities", "publicity"];
 
   const searchResults = [
     { title: "Admission Requirements", type: "Admission", link: "/admission#requirements" },
@@ -319,10 +346,6 @@ export default function Navbar() {
                 );
               })}
 
-              {/* Extra links */}
-              <Link href="/faculty" className={`text-sm font-semibold tracking-wide hover:text-crimson dark:hover:text-gold transition-colors duration-200 px-3 py-2 rounded-lg ${pathname === "/faculty" ? "text-crimson dark:text-gold" : "text-slate-700 dark:text-slate-300"}`}>Faculty</Link>
-              <Link href="/research" className={`text-sm font-semibold tracking-wide hover:text-crimson dark:hover:text-gold transition-colors duration-200 px-3 py-2 rounded-lg ${pathname === "/research" ? "text-crimson dark:text-gold" : "text-slate-700 dark:text-slate-300"}`}>Research</Link>
-              <Link href="/labs" className={`text-sm font-semibold tracking-wide hover:text-crimson dark:hover:text-gold transition-colors duration-200 px-3 py-2 rounded-lg ${pathname === "/labs" ? "text-crimson dark:text-gold" : "text-slate-700 dark:text-slate-300"}`}>Labs</Link>
             </nav>
 
             {/* Quick Actions */}
@@ -389,9 +412,7 @@ export default function Navbar() {
                     </div>
                   );
                 })}
-                <Link href="/faculty" className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50">Faculty</Link>
-                <Link href="/research" className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50">Research</Link>
-                <Link href="/labs" className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50">Labs</Link>
+
                 <Link href="/contact" className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50">Contact</Link>
                 <div className="pt-2 border-t border-slate-200/30 dark:border-slate-800/30">
                   <Link href="/admission" className="block px-4 py-3 rounded-xl bg-crimson text-white text-sm font-bold text-center">

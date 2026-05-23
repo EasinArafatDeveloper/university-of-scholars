@@ -11,6 +11,7 @@ import Link from "next/link";
 interface Program {
   title: string;
   dept: string;
+  slug: string;
   level: "undergrad" | "postgrad" | "diploma" | "professional";
   duration: string;
   semesters: number;
@@ -24,68 +25,86 @@ const programsData: Program[] = [
   {
     title: "B.Sc. in Computer Science & Eng.",
     dept: "cse",
+    slug: "cse",
     level: "undergrad",
     duration: "4 Years",
     semesters: 8,
-    tuition: "480,000 BDT",
-    requirements: "Combined GPA 6.0 in SSC/HSC with Math in HSC.",
-    curriculum: ["Algorithms", "Machine Learning", "Software Architecture", "IoT Systems"],
-    career: "Software Architect, AI Engineer, Security Analyst"
+    tuition: "450,000 BDT",
+    requirements: "Combined GPA 6.0 in SSC/HSC with Mathematics in HSC.",
+    curriculum: ["Computer Programming", "Software Engineering", "Computer Networks", "Database Systems"],
+    career: "Software Engineer, Web Developer, System Administrator"
+  },
+  {
+    title: "B.Sc. in Electrical & Electronic Eng.",
+    dept: "eee",
+    slug: "eee",
+    level: "undergrad",
+    duration: "4 Years",
+    semesters: 8,
+    tuition: "450,000 BDT",
+    requirements: "Combined GPA 6.0 in SSC/HSC with Mathematics in HSC.",
+    curriculum: ["Electrical Circuits", "Electronic Devices", "Control Systems", "Microprocessors"],
+    career: "Electrical Engineer, Robotics Engineer, Switchgear Specialist"
+  },
+  {
+    title: "B.Sc. in Textile Engineering",
+    dept: "textile",
+    slug: "textile",
+    level: "undergrad",
+    duration: "4 Years",
+    semesters: 8,
+    tuition: "450,000 BDT",
+    requirements: "Combined GPA 6.0 in SSC/HSC with Chemistry & Physics in HSC.",
+    curriculum: ["Yarn Manufacturing", "Circular Knitting", "Chemical Wet Processing", "Apparel & Garment Tech"],
+    career: "Textile Engineer, Wet Processing Executive, Quality Control Manager"
   },
   {
     title: "Bachelor of Business Admin (BBA)",
     dept: "bba",
+    slug: "bba",
     level: "undergrad",
     duration: "4 Years",
     semesters: 8,
-    tuition: "420,000 BDT",
+    tuition: "350,000 BDT",
     requirements: "Combined GPA 5.5 in SSC/HSC (any background).",
-    curriculum: ["FinTech", "Global Logistics", "Digital Marketing", "Corporate Finance"],
-    career: "Product Manager, Financial Analyst, HR Consultant"
+    curriculum: ["Marketing Management", "Financial Accounting", "Human Resource Management", "Strategic Business Case"],
+    career: "Product Executive, Financial Analyst, HR Executive"
   },
   {
-    title: "M.Sc. in Computer Science",
-    dept: "cse",
-    level: "postgrad",
-    duration: "2 Years",
-    semesters: 4,
-    tuition: "240,000 BDT",
-    requirements: "B.Sc. in CS/EE or relevant field with CGPA 2.75.",
-    curriculum: ["Advanced Deep Learning", "Cloud Cryptography", "Quantum Computing"],
-    career: "AI Researcher, Data Scientist, Tech Lead"
+    title: "B.A. in English",
+    dept: "english",
+    slug: "english",
+    level: "undergrad",
+    duration: "4 Years",
+    semesters: 8,
+    tuition: "300,000 BDT",
+    requirements: "Combined GPA 5.5 in SSC/HSC (any background).",
+    curriculum: ["English Literature", "Creative Writing", "Phonetics & Phonology", "English Language Teaching"],
+    career: "Content Writer, Educator, Communications Officer"
   },
   {
     title: "Master of Business Admin (MBA)",
     dept: "bba",
+    slug: "mba",
     level: "postgrad",
     duration: "1.5 Years",
     semesters: 3,
-    tuition: "180,000 BDT",
+    tuition: "140,500 BDT",
     requirements: "Graduation CGPA 2.50 in any discipline.",
-    curriculum: ["Strategic Leadership", "Investment Banking", "Venture Incubator"],
-    career: "Management Consultant, Startup Founder, CFO"
+    curriculum: ["Strategic Leadership", "Investment Analysis", "Managerial Economics"],
+    career: "Management Consultant, Project Manager, Operations Director"
   },
   {
-    title: "Diploma in Cyber Security",
-    dept: "cse",
-    level: "diploma",
+    title: "Executive MBA (EMBA)",
+    dept: "bba",
+    slug: "emba",
+    level: "postgrad",
     duration: "1 Year",
     semesters: 2,
-    tuition: "95,000 BDT",
-    requirements: "HSC pass or graduation equivalent.",
-    curriculum: ["Penetration Testing", "Ethical Hacking", "Digital Forensics"],
-    career: "Security Analyst, Network Security Officer"
-  },
-  {
-    title: "Professional FinTech Certificate",
-    dept: "bba",
-    level: "professional",
-    duration: "6 Months",
-    semesters: 1,
-    tuition: "60,000 BDT",
-    requirements: "Graduation or corporate endorsement.",
-    curriculum: ["Blockchain Protocols", "Algorithmic Trading", "Regulatory Tech"],
-    career: "FinTech Specialist, Blockchain Developer"
+    tuition: "120,600 BDT",
+    requirements: "Graduation CGPA 2.50 with minimum 2 years of corporate experience.",
+    curriculum: ["Executive Decision Making", "Corporate Governance", "Change Management"],
+    career: "Operations Manager, General Manager, Senior Executive"
   }
 ];
 
@@ -111,15 +130,16 @@ function ProgramsContent() {
   const levels = [
     { label: "All Formats", value: "all" },
     { label: "Undergraduate", value: "undergrad" },
-    { label: "Postgraduate", value: "postgrad" },
-    { label: "Diploma", value: "diploma" },
-    { label: "Professional", value: "professional" }
+    { label: "Postgraduate", value: "postgrad" }
   ];
 
   const depts = [
     { label: "All Departments", value: "all" },
     { label: "Computer Science (CSE)", value: "cse" },
-    { label: "Business (BBA)", value: "bba" }
+    { label: "Electrical Engineering (EEE)", value: "eee" },
+    { label: "Textile Engineering", value: "textile" },
+    { label: "Business (BBA)", value: "bba" },
+    { label: "English", value: "english" }
   ];
 
   const filteredPrograms = programsData.filter((p) => {
@@ -239,17 +259,28 @@ function ProgramsContent() {
                 </div>
               </div>
 
-              <div className="border-t border-slate-200 dark:border-slate-850 pt-4 mt-6 flex justify-between items-center">
-                <div>
-                  <span className="text-[9px] uppercase font-bold text-slate-400">Est. Total Tuition</span>
-                  <p className="text-sm font-black text-crimson dark:text-gold">{prog.tuition}</p>
+              <div className="border-t border-slate-200 dark:border-slate-850 pt-4 mt-6 flex flex-col gap-3">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <span className="text-[9px] uppercase font-bold text-slate-400">Est. Total Tuition</span>
+                    <p className="text-sm font-black text-crimson dark:text-gold">{prog.tuition}</p>
+                  </div>
+                  <span className="text-[10px] font-bold text-slate-550 dark:text-slate-400 font-mono">{prog.duration} ({prog.semesters} Semesters)</span>
                 </div>
-                <Link
-                  href="/admission"
-                  className="px-4 py-2 rounded-xl bg-crimson dark:bg-gold text-white dark:text-navy-950 text-xs font-bold hover:scale-105 active:scale-95 transition-transform"
-                >
-                  Apply Now
-                </Link>
+                <div className="grid grid-cols-2 gap-2 w-full">
+                  <Link
+                    href={`/programs/${prog.slug}`}
+                    className="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800/60 text-center transition-all flex items-center justify-center"
+                  >
+                    View Details
+                  </Link>
+                  <Link
+                    href="/admission"
+                    className="px-3 py-2 rounded-xl bg-crimson dark:bg-gold text-white dark:text-navy-950 text-xs font-bold hover:scale-102 active:scale-98 text-center transition-all shadow-md flex items-center justify-center"
+                  >
+                    Apply Now
+                  </Link>
+                </div>
               </div>
             </div>
           ))

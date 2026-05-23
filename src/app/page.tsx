@@ -12,25 +12,24 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const leadershipData = [
   {
-    name: "Prof. Dr. Mamunur Rashid",
-    title: "Vice Chancellor, IUS",
+    name: "Admiral M. Farid Habib (Retd)",
+    title: "Chairman, BOT",
+    subtitle: "University of Scholars",
+    image: "https://ius.edu.bd/public/upload/messages_from/EzrX5hXOLkB7SUeExOpE.jpg",
+    profileUrl: "https://ius.edu.bd/administrative-profile/admiral-m.-farid-habib-(retd)",
+    quote: "It was always my desire to create a University for students where the quality of education is always given more priority than any other things.",
+    message: "It was always my desire to create a University for students where the quality of education is always given more priority than any other things. As I was in Defense, not only proper education but also extracurricular activities and personal development are also of great importance to me. No student can only study for the whole day without any other form of refreshments, participating in different kinds of activities not only energizes their body but it also keeps their mind fresh and alert at all times. we want our students to be active and innovative and supporting them in their future ventures is our main goal. Keeping all these aspects in mind, the University of Scholars are offering scholarship for players for the first in the history of Bangladesh so that students are always motivated towards a bright future ahead. we have also created many clubs such as Debate Club, Communications club, Photography club so that students can choose a hobby or muse for themselves.",
+    bio: "Admiral Muhammad Farid Habib was born in 1959 in Kalihati Upazila of Tangail. He joined Bangladesh Navy Academy in 1976 as an officer cadet. He received basic naval training as a Midshipman at Britannia Royal Naval College, Dartmouth, UK. After completing his training he was commissioned in the Executive Branch of the Bangladesh Navy on 1 January 1979.\n\nHe has been awarded the highest scouts award 'Silver Tiger' by the President of the People's Republic of Bangladesh. He received a Commendation from the Chief of Naval Staff for outstanding performance and professional excellence in the Navy. He has also been awarded the highest achievement awards namely 'The Bangladesh Navy Medal' and 'The Bangladesh Coast Guard Medal' for outstanding contributions in different fields of the Navy and Coast Guard.\n\nHe was appointed as Chief of Staff of the Bangladesh Navy on 20 January 2013 and assumed office on 28 January 2013. He has been promoted to the rank of Admiral on 17 January 2016. He left office on 27 January 2016. He also performed the duties of chairman, of the National Hydrographic Committee, Bangladesh. Admiral Muhammad Farid Habib is also the Chairman of the Board of Trustees at the University of Scholars."
+  },
+  {
+    name: "Prof. Dr. Enamul Basher",
+    title: "Vice Chancellor",
+    subtitle: "University of Scholars",
+    image: "https://ius.edu.bd/public/upload/messages_from/SXoUIel7NUrYsHuTagii.jpg",
+    profileUrl: "https://ius.edu.bd/administrative-profile/dr.-enamul-basher",
     quote: "Our mission is to establish a learning system where technology, critical humanities, and active internship engagement build global readiness.",
-    bio: "Dr. Mamunur holds a PhD in Systems Engineering from KTH Royal Institute of Technology, Sweden, and has published 80+ articles in journals of high impact factors.",
-    initials: "MR"
-  },
-  {
-    name: "S. M. M. Abdul Hamid",
-    title: "Founder, IUS Board of Trustees",
-    quote: "We set out to create a university that breaks from conventional rote academic formats, acting instead as a startup hub for research.",
-    bio: "An industrialist and tech philanthropist, Abdul Hamid has financed numerous educational initiatives in South Asia and Scandinavia.",
-    initials: "AH"
-  },
-  {
-    name: "Engr. Taslim Al-Jubayer",
-    title: "Chairman, Board of Trustees",
-    quote: "We invest in high-end labs, AI centers, and Bloomberg terminals because we believe scholars learn by doing.",
-    bio: "Graduated from MIT in Civil Infrastructure, Taslim has spearheaded major green energy projects globally.",
-    initials: "TJ"
+    message: "I feel privileged and honored to join The University of Scholars as Vice-Chancellor appointed by Mr. Mohammed Shahabuddin, the Honorable President of the People’s Republic of Bangladesh and the Chancellor of the University of Scholars. I must also express my heartfelt gratitude to the Board of Trustees (BOT) members of the Scholars for proposing my name in the panel sent to the Chancellor for appointing me as VC. A university is where knowledge is gathered, generated, and disseminated. The International University of Scholars is a comparatively new organization in the domain of higher education in Bangladesh, thus striving for academic excellence in imparting quality education and skill development to many young students. A vision of the university is also to create awareness among the students of inculcating appropriate human values, social commitment, and patriotism side by side with the academic pursuit of excellence. Another vision is to develop leadership quality among the students through the activities of a number of student clubs. Teachers of the university are also committed to imparting quality education in the pursuit of academic excellence. Our (The BOT members, Teachers, Officials, and students) mission is to provide degrees of International Standard with a commitment to uplift the status of the university among the ‘Top Ten’ private Universities in Bangladesh. In the present era of globalization, everybody is entitled to be connected instantaneously with millions of people worldwide simply by touching a keyboard of an electronic device. We would thus like to connect our younger generation (particularly our students) with a global knowledge bank and universal human wisdom, along with our national pride, culture, heritage, and core natural values. Finally, I would like to take the liberty of urging all our stakeholders, such as the Govt. of Bangladesh, the UGC, all educational institutions in and around the University of Scholars, and over all the citizens of Bangladesh for their generous help and assistance to our mission and visions.",
+    bio: "Prof. Dr. Enamul Basher is a renowned professor of Electrical and Electronic Engineering (EEE), having spent decades teaching and leading research at BUET (1983-2019) where he served as Professor, Head of the Department, and Dean of the Faculty of EEE. He earned his M.Sc. Engg. and Ph.D. degrees in Electrical and Electronic Engineering from Saint Petersburg Polytechnic University, Russia, in 1979 and 1982.\n\nDr. Basher has also served as the Chairman of the EEE Department at Stamford University Bangladesh, Professor in the EEE Department at the University of Asia Pacific (UAP), and Dean of the Faculty of Electrical and Computer Engineering at the Bangladesh Army University of Science and Technology (BAUST). His research focuses on renewable energy systems, power electronics, sustainable energy solutions (such as solar PV optimization and biogas hybrids), and grid stability."
   }
 ];
 
@@ -89,44 +88,68 @@ export default function Home() {
   const [activeFaculty, setActiveFaculty] = useState(0);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [activeLabTab, setActiveLabTab] = useState("cse");
+  const [activeLeaderModal, setActiveLeaderModal] = useState<{
+    name: string;
+    title: string;
+    subtitle: string;
+    image: string;
+    content: string;
+    type: "message" | "bio";
+  } | null>(null);
+
+  useEffect(() => {
+    if (activeLeaderModal) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+    return () => document.body.classList.remove("modal-open");
+  }, [activeLeaderModal]);
 
   const stats = [
-    { label: "Active Scholars", count: "12,000+", icon: Users, desc: "From 15+ countries" },
-    { label: "Elite Faculty", count: "350+", icon: Award, desc: "PhD scholars & industry leaders" },
-    { label: "Academic Programs", count: "48+", icon: BookOpen, desc: "Accredited globally" },
-    { label: "Research Labs", count: "18+", icon: Microscope, desc: "Advanced IoT, VR, Biotech" },
-    { label: "Employment Rate", count: "94%", icon: GraduationCap, desc: "Within 6 months of graduation" },
-    { label: "Scholarships Awarded", count: "$2.5M+", icon: Sparkles, desc: "Annual financial waivers" },
+    { label: "Active Scholars", count: "7,000+", icon: Users, desc: "Across 5 departments" },
+    { label: "Elite Faculty", count: "150+", icon: Award, desc: "Local & international graduates" },
+    { label: "Academic Programs", count: "7+", icon: BookOpen, desc: "UGC Approved & IEB Aligned" },
+    { label: "Practical Labs", count: "15+", icon: Microscope, desc: "CSE, EEE, Textile, Natural Sciences" },
+    { label: "Graduate Placement", count: "90%+", icon: GraduationCap, desc: "In top corporate networks" },
+    { label: "Tuition Waivers", count: "Up to 100%", icon: Sparkles, desc: "SSC & HSC GPA based" },
   ];
 
   const faculties = [
     { 
       name: "Computer Science & Eng.", 
       short: "CSE", 
-      intro: "Pioneering the tech revolution. Learn Machine Learning, Quantum Computing, and Full Stack Architecture.", 
+      intro: "Pioneering the tech revolution. Learn Programming, Software Engineering, Networks, and Artificial Intelligence.", 
       image: "linear-gradient(135deg, #1e3a8a 0%, #06b6d4 100%)",
-      highlights: ["AI & Robotics Lab", "98% Job Placement", "MOU with Silicon Valley firms"]
+      highlights: ["Software Engineering Lab", "Network Systems sandbox", "High Career Placement"]
     },
     { 
       name: "Business Administration", 
       short: "BBA", 
-      intro: "Fostering global corporate leaders. Focus on Entrepreneurship, FinTech, and Data Analytics.", 
+      intro: "Fostering global corporate leaders. Focus on Finance, Marketing, Management, and Entrepreneurship.", 
       image: "linear-gradient(135deg, #7c3aed 0%, #d946ef 100%)",
-      highlights: ["Bloomberg Terminals", "Venture Seed Funding", "International Exchange"]
+      highlights: ["MBA & EMBA options", "Case study methodology", "Active Alumni network"]
     },
     { 
-      name: "Law & Justice", 
-      short: "LLB", 
-      intro: "Upholding equity and research-driven advocacy. Engage in mock trials and global judicial research.", 
+      name: "Electrical & Electronic Eng.", 
+      short: "EEE", 
+      intro: "Driving electrical and electronics innovation. Study circuits, power switches, microprocessor design, and robotics.", 
       image: "linear-gradient(135deg, #b45309 0%, #f59e0b 100%)",
-      highlights: ["Moot Court Competition", "Human Rights Center", "Alumni in Supreme Courts"]
+      highlights: ["Robotics & Control Lab", "Power Switchgear Lab", "Industry-expert Mentors"]
     },
     { 
-      name: "Pharmacy", 
-      short: "B.Pharm", 
-      intro: "Innovating health sciences. Focus on clinical trial design, drug discovery, and biotechnology research.", 
+      name: "Textile Engineering", 
+      short: "Textile", 
+      intro: "Pioneering modern apparel manufacturing. Focus on yarn manufacturing, knitting, wet processing, and quality control.", 
       image: "linear-gradient(135deg, #059669 0%, #10b981 100%)",
-      highlights: ["FDA Standard Labs", "Clinical Internships", "Pharma Research Journal"]
+      highlights: ["Circular Knitting Machine", "Apparel & Fashion Lab", "Garments Industry Placement"]
+    },
+    { 
+      name: "English", 
+      short: "English", 
+      intro: "Developing critical communication, cultural awareness, and creative thinking through language and literature.", 
+      image: "linear-gradient(135deg, #4f46e5 0%, #ec4899 100%)",
+      highlights: ["B.A. in English", "Creative Writing Forums", "Language & Communication Lab"]
     },
   ];
 
@@ -338,54 +361,103 @@ export default function Home() {
       </section>
 
       {/* D. Visionary Leadership Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-4 mb-12">
-          <span className="text-xs font-bold tracking-widest text-crimson dark:text-gold uppercase">Visionary Leadership</span>
-          <h2 className="font-serif font-bold text-3xl sm:text-5xl text-slate-900 dark:text-white">Leading IUS to Excellence</h2>
-          <p className="text-slate-500 max-w-xl mx-auto text-sm sm:text-base">
-            Meet the primary founders and academic leaders driving our vision of Scandinavian-quality practical education.
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Subtle decorative background spots */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-72 h-72 rounded-full blur-[120px] bg-gold/5 pointer-events-none" />
+        <div className="absolute top-1/3 right-1/4 -translate-y-1/2 w-72 h-72 rounded-full blur-[120px] bg-crimson/5 pointer-events-none" />
+
+        <div className="text-center space-y-4 mb-16 relative z-10">
+          <span className="text-xs font-bold tracking-[0.2em] text-crimson dark:text-gold uppercase px-3 py-1 rounded-full bg-crimson/5 dark:bg-gold/5 border border-crimson/10 dark:border-gold/10">
+            Visionary Leadership
+          </span>
+          <h2 className="font-serif font-extrabold text-3xl sm:text-5xl text-slate-900 dark:text-white tracking-tight">
+            Message from Chairman and Vice Chancellor
+          </h2>
+          <p className="text-slate-500 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+            Read the key statements and career achievements of the top leaders guiding the University of Scholars towards global excellence.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto relative z-10">
           {leadershipData.map((leader, idx) => (
             <div 
               key={idx} 
-              className="glass-card p-6 rounded-2xl flex flex-col justify-between hover:border-crimson dark:hover:border-gold transition-all duration-300 shadow-xl group hover:-translate-y-1"
+              className="group flex flex-col justify-between items-center text-center p-8 sm:p-10 rounded-3xl relative overflow-hidden transition-all duration-500 bg-[#faf6f0]/80 dark:bg-[#161f30]/40 backdrop-blur-xl border border-gold/15 dark:border-gold/5 hover:border-gold/30 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(197,160,89,0.15)] shadow-sm"
             >
-              <div className="space-y-4">
-                {/* Initials Placeholder with beautiful gradient */}
-                <div className="flex items-center gap-4">
-                  <div className={`w-14 h-14 rounded-full flex items-center justify-center font-serif text-lg font-black text-white shadow-lg ${
-                    idx === 0 
-                      ? "bg-gradient-to-tr from-crimson to-pink-500" 
-                      : idx === 1 
-                      ? "bg-gradient-to-tr from-gold to-yellow-400" 
-                      : "bg-gradient-to-tr from-blue-600 to-cyan-500"
-                  }`}>
-                    {leader.initials}
-                  </div>
-                  <div>
-                    <h3 className="font-serif font-extrabold text-lg text-slate-900 dark:text-white leading-tight group-hover:text-crimson dark:group-hover:text-gold transition-colors">{leader.name}</h3>
-                    <p className="text-[11px] font-bold text-slate-400 dark:text-slate-500 mt-1 tracking-wider uppercase">{leader.title}</p>
+              {/* Decorative hover gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-crimson/[0.02] to-gold/[0.02] dark:from-crimson/[0.04] dark:to-gold/[0.04] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+              <div className="space-y-6 w-full flex flex-col items-center relative z-10">
+                {/* Modern Avatar with artistic offset shadow circle */}
+                <div className="relative w-44 h-44 mb-2 flex items-center justify-center">
+                  {/* Decorative background circle (shifted shadow) */}
+                  <div className="absolute inset-2 rounded-full border border-gold/45 translate-x-1.5 translate-y-1.5 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500 pointer-events-none" />
+                  
+                  {/* Main Avatar Frame */}
+                  <div className="w-40 h-40 rounded-full border-2 border-gold p-1 bg-[#5c0632] overflow-hidden shadow-xl z-10 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 flex items-center justify-center">
+                    <img 
+                      src={leader.image} 
+                      alt={leader.name} 
+                      className="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105" 
+                    />
                   </div>
                 </div>
 
-                {/* Quote */}
-                <div className="relative pt-2">
-                  <span className="absolute -top-2 -left-2 text-slate-200 dark:text-slate-800 font-serif text-5xl select-none leading-none">&ldquo;</span>
-                  <p className="text-slate-600 dark:text-slate-350 text-sm leading-relaxed italic relative z-10 pl-2">
+                {/* Information Header */}
+                <div className="space-y-2.5">
+                  <h3 className="font-serif font-black text-2xl text-slate-900 dark:text-white tracking-tight leading-tight transition-colors duration-300 group-hover:text-crimson dark:group-hover:text-gold">
+                    {leader.name}
+                  </h3>
+                  <div className="space-y-1">
+                    <p className="text-xs font-mono font-bold text-crimson dark:text-gold tracking-[0.15em] uppercase">
+                      {leader.title}
+                    </p>
+                    <p className="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-bold">
+                      {leader.subtitle}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Short quote preview with decorative quotes */}
+                <div className="relative max-w-sm px-6 pt-2 pb-4">
+                  <span className="absolute left-0 -top-2 text-crimson/10 dark:text-gold/10 font-serif text-6xl select-none leading-none">&ldquo;</span>
+                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed italic relative z-10 font-medium font-serif">
                     {leader.quote}
                   </p>
+                  <span className="absolute right-0 bottom-0 text-crimson/10 dark:text-gold/10 font-serif text-6xl select-none leading-none">&rdquo;</span>
                 </div>
               </div>
 
-              {/* Bio details */}
-              <div className="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800/60 flex items-start gap-2.5">
-                <UserCheck className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                <p className="text-[11px] leading-relaxed text-slate-400 dark:text-slate-500">
-                  {leader.bio}
-                </p>
+              {/* Action buttons with icons */}
+              <div className="w-full mt-10 pt-6 border-t border-slate-200/60 dark:border-slate-800/40 flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+                <button
+                  onClick={() => setActiveLeaderModal({
+                    name: leader.name,
+                    title: leader.title,
+                    subtitle: leader.subtitle,
+                    image: leader.image,
+                    content: leader.bio,
+                    type: "bio"
+                  })}
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-slate-950 dark:hover:text-white transition-all text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <UserCheck className="w-4 h-4 shrink-0 text-slate-400 dark:text-gold/60" />
+                  View Profile
+                </button>
+                <button
+                  onClick={() => setActiveLeaderModal({
+                    name: leader.name,
+                    title: leader.title,
+                    subtitle: leader.subtitle,
+                    image: leader.image,
+                    content: leader.message,
+                    type: "message"
+                  })}
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-crimson dark:bg-gold text-white dark:text-navy-950 hover:bg-crimson-hover dark:hover:bg-gold-hover hover:shadow-lg hover:shadow-crimson/10 dark:hover:shadow-gold/10 transition-all text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <BookOpen className="w-4 h-4 shrink-0 opacity-80" />
+                  Read Message
+                </button>
               </div>
             </div>
           ))}
@@ -571,7 +643,7 @@ export default function Home() {
               </div>
               <div className="flex justify-between items-center mt-4">
                 <span className="text-xs text-slate-400 font-mono">{club.members}</span>
-                <Link href="/about#facilities" className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-crimson dark:hover:bg-gold dark:hover:text-navy-950 transition-colors">
+                <Link href="/about/facilities" className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-crimson dark:hover:bg-gold dark:hover:text-navy-950 transition-colors">
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -712,6 +784,78 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* Leadership Modal */}
+      <AnimatePresence>
+        {activeLeaderModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Backdrop with a beautiful dark blur */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActiveLeaderModal(null)}
+              className="absolute inset-0 bg-[#090d16]/80 backdrop-blur-md"
+            />
+            
+            {/* Modal Content - Dynamic Light/Dark glass card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 15 }}
+              transition={{ type: "spring", duration: 0.4 }}
+              className="relative w-full max-w-2xl max-h-[85vh] overflow-hidden rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl z-10 border border-gold/20 dark:border-gold/10 bg-[#fdfbf7] dark:bg-[#111622] text-left flex flex-col"
+            >
+              {/* Close Button - Custom cross */}
+              <button
+                onClick={() => setActiveLeaderModal(null)}
+                className="absolute top-4 right-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white/10 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors cursor-pointer"
+                aria-label="Close modal"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Modal Header */}
+              <div className="flex flex-col sm:flex-row items-center gap-6 pb-6 border-b border-slate-200 dark:border-slate-800/80 shrink-0">
+                <div className="w-20 h-20 rounded-full border-2 border-gold p-1 shrink-0 bg-[#5c0632] overflow-hidden shadow-lg">
+                  <img
+                    src={activeLeaderModal.image}
+                    alt={activeLeaderModal.name}
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
+                <div className="text-center sm:text-left space-y-1">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-crimson dark:text-gold px-2.5 py-0.5 rounded bg-crimson/5 dark:bg-gold/5 border border-crimson/10 dark:border-gold/10 inline-block">
+                    {activeLeaderModal.type === "message" ? "Official Message" : "Biography / Profile"}
+                  </span>
+                  <h3 className="text-2xl font-serif font-black text-slate-900 dark:text-white leading-tight">
+                    {activeLeaderModal.name}
+                  </h3>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider">
+                    {activeLeaderModal.title} — {activeLeaderModal.subtitle}
+                  </p>
+                </div>
+              </div>
+
+              {/* Scrollable Content Body with high contrast */}
+              <div className="text-slate-700 dark:text-slate-350 text-sm sm:text-base leading-relaxed whitespace-pre-line overflow-y-auto py-6 pr-2 custom-scrollbar flex-grow font-medium">
+                {activeLeaderModal.content}
+              </div>
+
+              {/* Modal Footer with university theme close button */}
+              <div className="flex justify-end pt-4 border-t border-slate-200 dark:border-slate-800/80 gap-4 shrink-0">
+                <button
+                  onClick={() => setActiveLeaderModal(null)}
+                  className="px-6 py-2.5 rounded-xl bg-crimson dark:bg-gold hover:bg-crimson-hover dark:hover:bg-gold-hover text-white dark:text-navy-950 text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
+                >
+                  Close Window
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
