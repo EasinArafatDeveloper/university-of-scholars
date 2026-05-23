@@ -203,7 +203,7 @@ export default function Home() {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[150px] bg-crimson/15 pointer-events-none z-10" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-[150px] bg-gold/10 pointer-events-none z-10" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full py-20 lg:py-32 text-center flex flex-col items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full py-24 lg:py-36 text-left space-y-8">
           
           {/* Pulsing Admissions Badge */}
           <motion.div 
@@ -223,7 +223,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ delay: 0.05 }}
-            className="font-serif font-black text-4xl sm:text-6xl lg:text-7xl xl:text-8xl text-white leading-[1.05] tracking-tight mt-8 max-w-4xl"
+            className="font-serif font-black text-4xl sm:text-6xl lg:text-7xl xl:text-8xl text-white leading-[1.05] tracking-tight max-w-4xl"
           >
             Where Brilliance <br />
             Meets{" "}
@@ -237,7 +237,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ delay: 0.1 }}
-            className="text-slate-200 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl font-normal mt-6"
+            className="text-slate-200 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl font-normal"
           >
             The University of Scholars (IUS) provides advanced research ecosystems, UGC-approved and IEB-aligned degrees, and EdTech-driven curriculums tailored to launch globally competitive careers.
           </motion.p>
@@ -247,7 +247,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ delay: 0.15 }}
-            className="flex flex-wrap justify-center gap-4 mt-8 w-full"
+            className="flex flex-wrap gap-4 mt-8 w-full"
           >
             <Link
               href="/admission"
@@ -269,7 +269,7 @@ export default function Home() {
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             transition={{ delay: 0.25 }}
-            className="flex flex-wrap justify-center gap-3.5 mt-12 pt-8 border-t border-white/10 w-full max-w-2xl"
+            className="flex flex-wrap gap-3 mt-12 pt-8 border-t border-white/10 w-full max-w-2xl"
           >
             {[
               { text: "Helsinki MoU", type: "Global" },
