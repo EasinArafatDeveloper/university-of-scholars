@@ -177,137 +177,112 @@ export default function Home() {
     <div className="relative overflow-x-hidden space-y-28 pb-16">
       
       {/* ─────────────────────────────────────────────────────────────
-         A. PREMIUM HERO SECTION (SPLIT SCREEN WITH AMBIENT LIGHTING)
+         A. PREMIUM HERO SECTION (CINEMATIC BACKGROUND VIDEO)
       ───────────────────────────────────────────────────────────── */}
-      <section className="relative w-full min-h-[92vh] flex items-center justify-center bg-[#090D16] overflow-hidden pt-20">
+      <section className="relative w-full min-h-[95vh] flex items-center justify-center bg-[#090D16] overflow-hidden pt-20">
         
-        {/* Ambient background glows */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_rgba(92,6,50,0.18)_0%,_transparent_60%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,_rgba(197,160,89,0.08)_0%,_transparent_65%)] pointer-events-none" />
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[140px] bg-blue-500/[0.05] pointer-events-none" />
-        
-        {/* Subtly animated grids */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-          style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
+        {/* Cinematic Background Video */}
+        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover opacity-45"
+          >
+            <source src="/hero-bg.mp4" type="video/mp4" />
+            <img src="/campus_hero.png" alt="University of Scholars Campus" className="w-full h-full object-cover opacity-60" />
+          </video>
+          
+          {/* Overlay gradients to ensure perfect readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-navy-950/70 via-navy-950/40 to-[#090D16] z-10" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,#090D16_80%)] z-10" />
+        </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
-            {/* Left Content */}
-            <div className="lg:col-span-7 space-y-8 text-left">
-              
-              {/* Pulsing Admissions Badge */}
-              <motion.div 
-                initial={{ opacity: 0, y: -20 }} 
-                animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2.5 px-4.5 py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-md text-white/90 text-[11px] font-bold uppercase tracking-[0.2em] shadow-lg shadow-black/10"
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-gold" />
-                </span>
-                Admissions Open • Fall 2026
-              </motion.div>
+        {/* Ambient glow spots */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[150px] bg-crimson/15 pointer-events-none z-10" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-[150px] bg-gold/10 pointer-events-none z-10" />
 
-              {/* Majestic Heading */}
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ delay: 0.05 }}
-                className="font-serif font-black text-4xl sm:text-6xl lg:text-7xl text-white leading-[1.05] tracking-tight"
-              >
-                Where Brilliance <br />
-                Meets{" "}
-                <span className="bg-gradient-to-r from-gold via-amber-200 to-gold bg-clip-text text-transparent drop-shadow-sm">
-                  Opportunity
-                </span>
-              </motion.h1>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full py-20 lg:py-32 text-center flex flex-col items-center">
+          
+          {/* Pulsing Admissions Badge */}
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }} 
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2.5 px-4.5 py-2 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md text-white/90 text-[11px] font-bold uppercase tracking-[0.2em] shadow-lg shadow-black/20"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-gold" />
+            </span>
+            Admissions Open • Fall 2026
+          </motion.div>
 
-              {/* Dynamic Subtext */}
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ delay: 0.1 }}
-                className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl font-normal"
-              >
-                The University of Scholars (IUS) provides advanced research ecosystems, UGC-approved and IEB-aligned degrees, and EdTech-driven curriculums tailored to launch globally competitive careers.
-              </motion.p>
+          {/* Cinematic Heading */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.05 }}
+            className="font-serif font-black text-4xl sm:text-6xl lg:text-7xl xl:text-8xl text-white leading-[1.05] tracking-tight mt-8 max-w-4xl"
+          >
+            Where Brilliance <br />
+            Meets{" "}
+            <span className="bg-gradient-to-r from-gold via-amber-200 to-gold bg-clip-text text-transparent drop-shadow-sm">
+              Opportunity
+            </span>
+          </motion.h1>
 
-              {/* CTA Row */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ delay: 0.15 }}
-                className="flex flex-wrap gap-4 pt-2"
-              >
-                <Link
-                  href="/admission"
-                  className="group px-7 py-3.5 rounded-xl bg-crimson text-white font-bold text-sm tracking-wide hover:bg-crimson-hover hover:shadow-[0_0_25px_rgba(92,6,50,0.45)] hover:scale-105 active:scale-98 transition-all duration-200 flex items-center gap-2"
-                >
-                  Apply Online
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  href="/programs"
-                  className="px-7 py-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-white font-bold text-sm tracking-wide hover:bg-white/10 hover:scale-105 active:scale-98 transition-all duration-200"
-                >
-                  Explore Programs
-                </Link>
-              </motion.div>
+          {/* Subtext */}
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.1 }}
+            className="text-slate-200 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl font-normal mt-6"
+          >
+            The University of Scholars (IUS) provides advanced research ecosystems, UGC-approved and IEB-aligned degrees, and EdTech-driven curriculums tailored to launch globally competitive careers.
+          </motion.p>
 
-              {/* Accreditation Badges */}
-              <motion.div 
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }} 
-                transition={{ delay: 0.25 }}
-                className="flex flex-wrap gap-2 pt-6 border-t border-white/5"
-              >
-                {[
-                  { text: "Helsinki MoU", type: "Global" },
-                  { text: "Bloomberg Terminal", type: "FinTech" },
-                  { text: "IEB Accredited", type: "Engineering" },
-                  { text: "BCS Member", type: "Computing" }
-                ].map((acc, i) => (
-                  <span key={i} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5 text-[10px] font-medium text-slate-400 shadow-sm">
-                    <span className="w-1 h-1 rounded-full bg-gold/70" />
-                    {acc.text}
-                  </span>
-                ))}
-              </motion.div>
-            </div>
-
-            {/* Right Video / Graphic Container */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="lg:col-span-5 relative w-full aspect-[4/3] sm:aspect-video lg:aspect-[4/5] rounded-[32px] overflow-hidden border border-white/10 shadow-2xl group"
+          {/* CTA Row */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.15 }}
+            className="flex flex-wrap justify-center gap-4 mt-8 w-full"
+          >
+            <Link
+              href="/admission"
+              className="group px-8 py-4 rounded-xl bg-crimson text-white font-bold text-sm tracking-wide hover:bg-crimson-hover hover:shadow-[0_0_25px_rgba(92,6,50,0.45)] hover:scale-105 active:scale-98 transition-all duration-200 flex items-center gap-2"
             >
-              <div className="absolute inset-0 bg-navy-950/20 group-hover:bg-transparent transition-colors duration-300 z-10" />
-              
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover opacity-60 group-hover:opacity-85 transition-opacity duration-300"
-              >
-                <source src="/hero-bg.mp4" type="video/mp4" />
-                <img src="/campus_hero.png" alt="University of Scholars Campus" className="w-full h-full object-cover" />
-              </video>
+              Apply Online
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              href="/programs"
+              className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-white font-bold text-sm tracking-wide hover:bg-white/10 hover:scale-105 active:scale-98 transition-all duration-200 backdrop-blur-md"
+            >
+              Explore Programs
+            </Link>
+          </motion.div>
 
-              <div className="absolute bottom-6 left-6 right-6 z-20 p-5 rounded-2xl bg-slate-950/70 border border-white/10 backdrop-blur-md flex items-center justify-between shadow-xl">
-                <div>
-                  <p className="text-[10px] font-bold text-gold uppercase tracking-wider">Virtual Campus Tour</p>
-                  <h4 className="text-white text-xs sm:text-sm font-bold mt-1">Explore Bulu Ocean Tower Facilities</h4>
-                </div>
-                <div className="w-10 h-10 rounded-full bg-crimson border border-crimson-hover flex items-center justify-center text-white cursor-pointer shadow-lg animate-pulse shrink-0">
-                  <Play className="w-4 h-4 fill-white ml-0.5" />
-                </div>
-              </div>
-            </motion.div>
-
-          </div>
+          {/* Accreditation Badges */}
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            transition={{ delay: 0.25 }}
+            className="flex flex-wrap justify-center gap-3.5 mt-12 pt-8 border-t border-white/10 w-full max-w-2xl"
+          >
+            {[
+              { text: "Helsinki MoU", type: "Global" },
+              { text: "Bloomberg Terminal", type: "FinTech" },
+              { text: "IEB Accredited", type: "Engineering" },
+              { text: "BCS Member", type: "Computing" }
+            ].map((acc, i) => (
+              <span key={i} className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-[10px] font-semibold text-slate-300 shadow-sm backdrop-blur-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold/70" />
+                {acc.text}
+              </span>
+            ))}
+          </motion.div>
         </div>
       </section>
 
