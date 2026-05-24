@@ -229,9 +229,9 @@ export default function Navbar() {
             : "bg-cream dark:bg-navy-950 border-slate-200/20 dark:border-b-white/5"
         }`}
       >
-        {/* Top Utility Bar */}
+        {/* Top Utility Bar — hidden on mobile, visible md+ */}
         <div
-          className={`bg-crimson text-white text-[11px] font-semibold transition-all duration-300 flex items-center overflow-hidden ${
+          className={`hidden md:flex bg-crimson text-white text-[11px] font-semibold transition-all duration-300 items-center overflow-hidden ${
             isScrolled ? "h-0 opacity-0" : "h-10 border-b border-crimson-hover/20"
           }`}
         >
@@ -268,14 +268,14 @@ export default function Navbar() {
         </div>
 
         {/* Main Navbar */}
-        <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${isScrolled ? "py-2" : "py-3"}`}>
-          <div className="flex items-center justify-between">
+        <div className={`max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 transition-all duration-300 ${isScrolled ? "py-2" : "py-2.5 sm:py-3"}`}>
+          <div className="flex items-center justify-between gap-2">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group shrink-0">
               <img
                 src="https://ius.edu.bd/public/upload/systemSettings/699753.png"
                 alt="University of Scholars Logo"
-                className="h-10 sm:h-12 w-auto object-contain mix-blend-multiply dark:mix-blend-screen dark:brightness-0 dark:invert transition-all"
+                className="h-9 sm:h-11 w-auto object-contain mix-blend-multiply dark:mix-blend-screen dark:brightness-0 dark:invert transition-all"
               />
             </Link>
 
@@ -348,7 +348,7 @@ export default function Navbar() {
 
             </nav>
 
-            {/* Quick Actions */}
+            {/* Desktop Quick Actions */}
             <div className="hidden xl:flex items-center gap-3">
               <Link
                 href="/admission"
@@ -359,18 +359,26 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile hamburger */}
-            <button
-              className="xl:hidden p-2.5 rounded-xl hover:bg-slate-200/50 dark:hover:bg-slate-800/50 text-slate-700 dark:text-slate-300"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle mobile menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
+            {/* Mobile right side — Apply Now pill + Hamburger */}
+            <div className="xl:hidden flex items-center gap-2">
+              <Link
+                href="/admission"
+                className="px-3 py-1.5 rounded-lg bg-crimson text-white text-xs font-bold shadow hover:bg-crimson-hover transition-colors whitespace-nowrap"
+              >
+                Apply
+              </Link>
+              <button
+                className="p-2 rounded-xl hover:bg-slate-200/50 dark:hover:bg-slate-800/50 text-slate-700 dark:text-slate-300"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle mobile menu"
+              >
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -383,7 +391,18 @@ export default function Navbar() {
               exit={{ opacity: 0, height: 0 }}
               className="xl:hidden overflow-hidden border-t border-slate-200/30 dark:border-slate-800/30 bg-cream dark:bg-navy-950"
             >
-              <div className="px-4 py-4 space-y-1 max-h-[70vh] overflow-y-auto">
+              <div className="px-3 py-3 space-y-1 max-h-[75vh] overflow-y-auto">
+
+                {/* Quick action chips at top of mobile menu */}
+                <div className="flex flex-wrap gap-2 pb-3 border-b border-slate-200/40 dark:border-slate-800/40 mb-1">
+                  <a href="tel:+8801844075476" className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-crimson/10 dark:bg-crimson/20 text-crimson dark:text-gold text-xs font-bold">
+                    <Phone className="w-3 h-3" /> Call Us
+                  </a>
+                  <Link href="/activities/alumni" className="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold">Alumni</Link>
+                  <Link href="/portal" className="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold">iEMS</Link>
+                  <Link href="/portal?tab=verify" className="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold">Certificate Verify</Link>
+                </div>
+
                 {navOrder.map((key) => {
                   const menu = megaMenus[key];
                   const isExpanded = mobileExpanded === key;
@@ -391,10 +410,10 @@ export default function Navbar() {
                     <div key={key}>
                       <button
                         onClick={() => setMobileExpanded(isExpanded ? null : key)}
-                        className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50"
+                        className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50 active:bg-slate-200/70 dark:active:bg-slate-800"
                       >
                         {menu.label}
-                        <ChevronDown className={`w-4 h-4 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
+                        <ChevronDown className={`w-4 h-4 transition-transform shrink-0 ${isExpanded ? "rotate-180" : ""}`} />
                       </button>
                       {isExpanded && (
                         <div className="pl-4 pb-2 space-y-0.5">
@@ -415,8 +434,8 @@ export default function Navbar() {
 
                 <Link href="/contact" className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50">Contact</Link>
                 <div className="pt-2 border-t border-slate-200/30 dark:border-slate-800/30">
-                  <Link href="/admission" className="block px-4 py-3 rounded-xl bg-crimson text-white text-sm font-bold text-center">
-                    Apply Now
+                  <Link href="/admission" className="block px-4 py-3 rounded-xl bg-gradient-to-r from-crimson to-crimson-hover text-white text-sm font-bold text-center shadow-lg">
+                    Apply Now — Fall 2026
                   </Link>
                 </div>
               </div>
