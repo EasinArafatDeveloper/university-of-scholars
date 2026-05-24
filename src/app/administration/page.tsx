@@ -122,7 +122,7 @@ export default function Administration() {
     <div className="relative overflow-x-hidden">
 
       {/* ── HERO ── */}
-      <section className="relative bg-gradient-to-br from-navy-950 via-[#0f1e35] to-[#1a0d1e] overflow-hidden py-20 lg:py-28">
+      <section className="relative bg-gradient-to-br from-navy-950 via-[#0f1e35] to-[#1a0d1e] overflow-hidden py-16 lg:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,_rgba(255,200,50,0.06)_0%,_transparent_60%)] pointer-events-none" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[160px] bg-crimson/8 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-[120px] bg-blue-500/5 pointer-events-none" />
@@ -140,7 +140,7 @@ export default function Administration() {
                 University of Scholars
               </motion.div>
               <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
-                className="font-serif font-extrabold text-4xl sm:text-6xl text-white leading-[1.05] tracking-tight">
+                className="font-serif font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight">
                 Administrative <br />
                 <span className="bg-gradient-to-r from-gold via-amber-300 to-gold bg-clip-text text-transparent">
                   Offices
@@ -186,7 +186,7 @@ export default function Administration() {
 
           {/* Stats row */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14">
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-14">
             {stats.map((s, i) => {
               const Icon = s.icon;
               return (
@@ -240,7 +240,7 @@ export default function Administration() {
                   {/* Top gradient bar */}
                   <div className={`h-1.5 w-full bg-gradient-to-r ${office.color}`} />
 
-                  <div className="p-6 space-y-5">
+                  <div className="p-4 sm:p-6 space-y-5">
                     {/* Header */}
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
@@ -330,7 +330,7 @@ export default function Administration() {
                   );
                 })}
               </div>
-              <div className="flex gap-3 pt-2">
+              <div className="flex flex-wrap gap-3 pt-2">
                 <a href="https://maps.google.com/?q=Bulu+Ocean+Tower+Banani+Dhaka" target="_blank" rel="noopener noreferrer"
                   className="group px-5 py-2.5 rounded-xl bg-white text-navy-950 font-bold text-xs hover:bg-gold transition-all flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5" /> Open in Maps <ExternalLink className="w-3 h-3 ml-0.5 opacity-50" />
@@ -342,7 +342,7 @@ export default function Administration() {
             </div>
 
             {/* Quick Office Directory */}
-            <div className="grid grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {offices.map((o) => {
                 const OIcon = o.icon;
                 return (

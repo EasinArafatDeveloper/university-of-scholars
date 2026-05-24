@@ -30,7 +30,7 @@ export default function Activities() {
   return (
     <div className="relative overflow-hidden">
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-navy-950 via-[#0f1e35] to-[#1a0d1e] py-20 lg:py-28 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-navy-950 via-[#0f1e35] to-[#1a0d1e] py-16 lg:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_40%_60%,_rgba(255,200,50,0.06)_0%,_transparent_60%)] pointer-events-none" />
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[140px] bg-blue-500/8 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
@@ -38,7 +38,7 @@ export default function Activities() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/60 text-[11px] font-bold uppercase tracking-widest mb-6">
               <Activity className="w-3.5 h-3.5 text-gold" /> Student Life & Activities
             </div>
-            <h1 className="font-serif font-extrabold text-4xl sm:text-6xl text-white leading-tight">
+            <h1 className="font-serif font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white leading-tight">
               Campus Life <br /><span className="bg-gradient-to-r from-gold to-amber-300 bg-clip-text text-transparent">& Activities</span>
             </h1>
             <p className="text-slate-400 text-base leading-relaxed max-w-xl mt-4">
@@ -62,7 +62,7 @@ export default function Activities() {
                 return (
                   <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}>
                     <Link href={item.href}
-                      className={`group flex flex-col gap-4 p-6 rounded-3xl bg-gradient-to-b border transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${item.color}`}>
+                      className={`group flex flex-col gap-4 p-4 sm:p-6 rounded-3xl bg-gradient-to-b border transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${item.color}`}>
                       <div className="flex items-start justify-between">
                         <div className={`p-3 rounded-2xl ${item.iconBg}`}><Icon className="w-5 h-5" /></div>
                         <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-white/60 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-700/50 text-slate-600 dark:text-slate-400">{item.badge}</span>

@@ -227,7 +227,7 @@ function PublicityContent() {
   return (
     <div className="min-h-screen">
       {/* ── HERO BANNER ── */}
-      <section className="relative bg-gradient-to-br from-navy-950 via-[#0f1e35] to-[#1a0d1e] overflow-hidden py-20 lg:py-28">
+      <section className="relative bg-gradient-to-br from-navy-950 via-[#0f1e35] to-[#1a0d1e] overflow-hidden py-16 lg:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,_rgba(255,200,50,0.06)_0%,_transparent_60%)] pointer-events-none" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[160px] bg-crimson/8 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-[120px] bg-blue-500/5 pointer-events-none" />
@@ -248,7 +248,7 @@ function PublicityContent() {
               </motion.div>
               
               <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
-                className="font-serif font-extrabold text-4xl sm:text-6xl text-white leading-[1.05] tracking-tight">
+                className="font-serif font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight">
                 Publicity &amp; <br />
                 <span className="bg-gradient-to-r from-gold via-amber-300 to-gold bg-clip-text text-transparent">
                   Media Presence

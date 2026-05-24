@@ -9,6 +9,9 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      screens: {
+        xs: "360px",
+      },
       colors: {
         crimson: {
           DEFAULT: "#5C0632",
@@ -42,4 +45,5 @@ const config: Config = {
   plugins: [],
 };
 export default config;
+
 

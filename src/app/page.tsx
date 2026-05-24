@@ -172,9 +172,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="space-y-24">
+    <div className="space-y-16 sm:space-y-24">
       {/* A. Hero Section — Background Video Hero Section */}
-      <section className="relative w-full min-h-[85vh] overflow-hidden bg-[#090D16] flex items-center">
+      <section className="relative w-full min-h-[80vh] sm:min-h-[85vh] overflow-hidden bg-[#090D16] flex items-center">
 
         {/* ── Background Video ── */}
         <div className="absolute inset-0 w-full h-full z-0 select-none pointer-events-none">
@@ -202,10 +202,10 @@ export default function Home() {
         />
 
         {/* ── Main Content ── */}
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full py-20 lg:py-32">
-          <div className="max-w-3xl space-y-6">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full py-14 sm:py-20 lg:py-32">
+          <div className="max-w-3xl space-y-4 sm:space-y-6">
             {/* Badge: Minimal pill with glowing active dot */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-white/80 text-[11px] font-semibold uppercase tracking-[0.18em] backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-white/80 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] backdrop-blur-sm max-w-full">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-gold" />
@@ -214,7 +214,7 @@ export default function Home() {
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-extrabold text-white leading-[1.08] tracking-tight">
+            <h1 className="text-[2rem] xs:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-extrabold text-white leading-[1.1] tracking-tight">
               Where Brilliance Meets{" "}
               <span className="bg-gradient-to-r from-gold via-amber-200 to-gold bg-clip-text text-transparent">
                 Opportunity
@@ -222,12 +222,12 @@ export default function Home() {
             </h1>
 
             {/* Description */}
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal">
-              The University of Scholars (IUS) is a leading global education community. We offer advanced research environments, internationally accredited programs, and modern digital ecosystems designed to accelerate your corporate and academic future.
+            <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal">
+              IUS is a leading global education community offering internationally accredited programs and modern digital ecosystems designed to accelerate your future.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-col xs:flex-row flex-wrap gap-3 pt-2">
               <Link
                 href="/admission"
                 className="group px-7 py-3.5 rounded-xl bg-crimson text-white font-semibold text-sm tracking-wide hover:bg-crimson-hover hover:shadow-[0_0_20px_rgba(92,6,50,0.4)] hover:scale-102 active:scale-98 transition-all duration-250 flex items-center gap-2"
@@ -244,7 +244,7 @@ export default function Home() {
             </div>
 
             {/* Accreditation tags */}
-            <div className="flex flex-wrap gap-2 pt-4">
+            <div className="flex flex-wrap gap-2 pt-2">
               {[
                 { text: "Helsinki MoU", type: "Global" },
                 { text: "Bloomberg Terminal", type: "FinTech" },
@@ -263,21 +263,21 @@ export default function Home() {
 
       {/* B. University Quick Stats */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
             return (
               <div 
                 key={idx}
-                className="glass-card p-5 rounded-2xl flex flex-col justify-between"
+                className="glass-card p-4 sm:p-5 rounded-2xl flex flex-col justify-between"
               >
-                <div className="p-3 rounded-xl bg-crimson/10 dark:bg-gold/10 text-crimson dark:text-gold w-fit mb-4">
+                <div className="p-2.5 sm:p-3 rounded-xl bg-crimson/10 dark:bg-gold/10 text-crimson dark:text-gold w-fit mb-3">
                   <Icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-bold text-2xl text-slate-900 dark:text-white">{stat.count}</h3>
-                  <p className="text-xs font-bold text-slate-700 dark:text-slate-300 mt-1 uppercase tracking-wide">{stat.label}</p>
-                  <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5">{stat.desc}</p>
+                  <h3 className="font-serif font-bold text-xl sm:text-2xl text-slate-900 dark:text-white">{stat.count}</h3>
+                  <p className="text-[10px] sm:text-xs font-bold text-slate-700 dark:text-slate-300 mt-1 uppercase tracking-wide leading-tight">{stat.label}</p>
+                  <p className="text-[9px] sm:text-[10px] text-slate-400 dark:text-slate-500 mt-0.5 hidden sm:block">{stat.desc}</p>
                 </div>
               </div>
             );
@@ -288,18 +288,18 @@ export default function Home() {
       {/* C. Faculties & Departments */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-12">
-          <h2 className="font-serif font-bold text-3xl sm:text-5xl text-slate-900 dark:text-white">Faculties & Departments</h2>
-          <p className="text-slate-500 max-w-xl mx-auto">Explore high-quality academic disciplines led by world-class professors.</p>
+          <h2 className="font-serif font-bold text-2xl sm:text-4xl lg:text-5xl text-slate-900 dark:text-white">Faculties & Departments</h2>
+          <p className="text-sm text-slate-500 max-w-xl mx-auto">Explore high-quality academic disciplines led by world-class professors.</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
           {/* List Toggles */}
           <div className="lg:col-span-4 space-y-3">
             {faculties.map((f, idx) => (
               <button
                 key={f.short}
                 onClick={() => setActiveFaculty(idx)}
-                className={`w-full text-left p-4 rounded-xl border transition-all duration-300 flex items-center justify-between ${
+                className={`w-full text-left p-3 sm:p-4 rounded-xl border transition-all duration-300 flex items-center justify-between ${
                   activeFaculty === idx
                     ? "bg-crimson text-white border-crimson dark:bg-slate-900 dark:border-gold dark:text-gold shadow-lg"
                     : "bg-transparent text-slate-700 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800/40"
@@ -316,7 +316,7 @@ export default function Home() {
 
           {/* Active Faculty View Card */}
           <div className="lg:col-span-8">
-            <div className="glass-panel p-8 rounded-3xl relative overflow-hidden shadow-2xl min-h-[350px] flex flex-col justify-between">
+            <div className="glass-panel p-5 sm:p-8 rounded-3xl relative overflow-hidden shadow-2xl min-h-[280px] sm:min-h-[350px] flex flex-col justify-between">
               {/* background gradient effect */}
               <div 
                 className="absolute top-0 right-0 w-80 h-80 rounded-full blur-[80px] opacity-20 pointer-events-none"
@@ -370,7 +370,7 @@ export default function Home() {
           <span className="text-xs font-bold tracking-[0.2em] text-crimson dark:text-gold uppercase px-3 py-1 rounded-full bg-crimson/5 dark:bg-gold/5 border border-crimson/10 dark:border-gold/10">
             Visionary Leadership
           </span>
-          <h2 className="font-serif font-extrabold text-3xl sm:text-5xl text-slate-900 dark:text-white tracking-tight">
+          <h2 className="font-serif font-extrabold text-2xl sm:text-4xl lg:text-5xl text-slate-900 dark:text-white tracking-tight">
             Message from Chairman and Vice Chancellor
           </h2>
           <p className="text-slate-500 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
@@ -378,23 +378,23 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12 max-w-5xl mx-auto relative z-10">
           {leadershipData.map((leader, idx) => (
             <div 
               key={idx} 
-              className="group flex flex-col justify-between items-center text-center p-8 sm:p-10 rounded-3xl relative overflow-hidden transition-all duration-500 bg-[#faf6f0]/80 dark:bg-[#161f30]/40 backdrop-blur-xl border border-gold/15 dark:border-gold/5 hover:border-gold/30 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(197,160,89,0.15)] shadow-sm"
+              className="group flex flex-col justify-between items-center text-center p-5 sm:p-8 lg:p-10 rounded-3xl relative overflow-hidden transition-all duration-500 bg-[#faf6f0]/80 dark:bg-[#161f30]/40 backdrop-blur-xl border border-gold/15 dark:border-gold/5 hover:border-gold/30 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(197,160,89,0.15)] shadow-sm"
             >
               {/* Decorative hover gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-tr from-crimson/[0.02] to-gold/[0.02] dark:from-crimson/[0.04] dark:to-gold/[0.04] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
               <div className="space-y-6 w-full flex flex-col items-center relative z-10">
                 {/* Modern Avatar with artistic offset shadow circle */}
-                <div className="relative w-44 h-44 mb-2 flex items-center justify-center">
+                <div className="relative w-36 h-36 sm:w-44 sm:h-44 mb-2 flex items-center justify-center">
                   {/* Decorative background circle (shifted shadow) */}
                   <div className="absolute inset-2 rounded-full border border-gold/45 translate-x-1.5 translate-y-1.5 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500 pointer-events-none" />
                   
                   {/* Main Avatar Frame */}
-                  <div className="w-40 h-40 rounded-full border-2 border-gold p-1 bg-[#5c0632] overflow-hidden shadow-xl z-10 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 flex items-center justify-center">
+                  <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-2 border-gold p-1 bg-[#5c0632] overflow-hidden shadow-xl z-10 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 flex items-center justify-center">
                     <img 
                       src={leader.image} 
                       alt={leader.name} 
@@ -405,7 +405,7 @@ export default function Home() {
 
                 {/* Information Header */}
                 <div className="space-y-2.5">
-                  <h3 className="font-serif font-black text-2xl text-slate-900 dark:text-white tracking-tight leading-tight transition-colors duration-300 group-hover:text-crimson dark:group-hover:text-gold">
+                  <h3 className="font-serif font-black text-lg sm:text-2xl text-slate-900 dark:text-white tracking-tight leading-tight transition-colors duration-300 group-hover:text-crimson dark:group-hover:text-gold">
                     {leader.name}
                   </h3>
                   <div className="space-y-1">
@@ -429,7 +429,7 @@ export default function Home() {
               </div>
 
               {/* Action buttons with icons */}
-              <div className="w-full mt-10 pt-6 border-t border-slate-200/60 dark:border-slate-800/40 flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+              <div className="w-full mt-6 sm:mt-10 pt-5 border-t border-slate-200/60 dark:border-slate-800/40 flex flex-col sm:flex-row items-center justify-center gap-3 relative z-10">
                 <button
                   onClick={() => setActiveLeaderModal({
                     name: leader.name,
@@ -466,20 +466,20 @@ export default function Home() {
 
       {/* E. Admissions Section (Timeline & FAQ) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass-panel p-8 md:p-12 rounded-3xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="glass-panel p-5 sm:p-8 md:p-12 rounded-3xl grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           <div className="space-y-6">
             <span className="text-xs font-bold tracking-widest text-crimson dark:text-gold uppercase">Join Our Ranks</span>
-            <h2 className="font-serif font-bold text-3xl sm:text-5xl text-navy-950 dark:text-white leading-tight">
+            <h2 className="font-serif font-bold text-2xl sm:text-4xl lg:text-5xl text-navy-950 dark:text-white leading-tight">
               Simple Step Admission Roadmap
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
               We design our application cycles to discover students of drive and curiosity. Follow our simple checklist to verify your application status.
             </p>
-            <div className="pt-4 flex gap-4 flex-wrap">
-              <Link href="/admission" className="px-6 py-3 rounded-xl bg-crimson text-white text-sm font-bold shadow-lg hover:bg-crimson-hover transition-all duration-200">
+            <div className="pt-3 flex flex-col xs:flex-row gap-3 flex-wrap">
+              <Link href="/admission" className="px-5 py-3 rounded-xl bg-crimson text-white text-sm font-bold shadow-lg hover:bg-crimson-hover transition-all duration-200 text-center">
                 Start Online Application
               </Link>
-              <Link href="/admission#calculator" className="px-6 py-3 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-bold hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+              <Link href="/admission#calculator" className="px-5 py-3 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-bold hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors text-center">
                 Tuition Estimator
               </Link>
             </div>
@@ -487,7 +487,7 @@ export default function Home() {
 
           <div className="space-y-4">
             {timeline.map((t, idx) => (
-              <div key={idx} className="flex gap-4 p-4 rounded-2xl bg-white/50 dark:bg-slate-900/40 border border-slate-200/50 dark:border-slate-800/40 hover:border-crimson dark:hover:border-gold transition-colors duration-200">
+              <div key={idx} className="flex gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-white/50 dark:bg-slate-900/40 border border-slate-200/50 dark:border-slate-800/40 hover:border-crimson dark:hover:border-gold transition-colors duration-200">
                 <span className="text-2xl font-black font-mono text-crimson dark:text-gold">{t.step}</span>
                 <div>
                   <h4 className="font-bold text-slate-900 dark:text-white text-sm">{t.title}</h4>
@@ -504,7 +504,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5 space-y-6">
             <span className="text-xs font-bold tracking-widest text-crimson dark:text-gold uppercase">Pioneering Science</span>
-            <h2 className="font-serif font-bold text-3xl sm:text-5xl text-navy-950 dark:text-white leading-tight">Academic Labs</h2>
+            <h2 className="font-serif font-bold text-2xl sm:text-4xl lg:text-5xl text-navy-950 dark:text-white leading-tight">Academic Labs</h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
               We collaborate with global leaders to provide 18+ sandbox laboratories focusing on computer engineering, robotics, power systems, textile testing, and physics sciences. Our students learn by experimenting.
             </p>
@@ -518,19 +518,19 @@ export default function Home() {
                 <span>Modern machinery including robotic arms & power switchgears</span>
               </div>
             </div>
-            <div className="pt-2 flex flex-wrap gap-4 items-center">
-              <Link href="/labs" className="px-6 py-3 rounded-xl bg-crimson dark:bg-gold text-white dark:text-navy-950 text-sm font-bold shadow-lg hover:scale-105 transition-transform flex items-center gap-2">
+            <div className="pt-2 flex flex-col xs:flex-row flex-wrap gap-3 items-start xs:items-center">
+              <Link href="/labs" className="px-5 py-2.5 rounded-xl bg-crimson dark:bg-gold text-white dark:text-navy-950 text-sm font-bold shadow-lg hover:scale-105 transition-transform flex items-center gap-2">
                 Explore All 18+ Labs <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href="/research" className="inline-flex items-center gap-1.5 text-slate-600 dark:text-slate-400 font-bold text-sm hover:underline">
-                Active Research Projects <ArrowUpRight className="w-4 h-4" />
+                Research Projects <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
 
           <div className="lg:col-span-7 space-y-6">
             {/* Tab Selector */}
-            <div className="flex flex-wrap gap-2 p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50">
+            <div className="flex flex-wrap gap-1.5 p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50">
               {labTabsData.map((tab) => {
                 const TabIcon = tab.icon;
                 return (
@@ -626,11 +626,11 @@ export default function Home() {
       {/* G. Student Life (Clubs & Community) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-12">
-          <h2 className="font-serif font-bold text-3xl sm:text-5xl text-navy-950 dark:text-white">Campus Student Life</h2>
-          <p className="text-slate-500 max-w-xl mx-auto">Discover a collaborative atmosphere full of athletic events, code festivals, and debate leagues.</p>
+          <h2 className="font-serif font-bold text-2xl sm:text-4xl lg:text-5xl text-navy-950 dark:text-white">Campus Student Life</h2>
+          <p className="text-sm text-slate-500 max-w-xl mx-auto">Discover a collaborative atmosphere full of events, code festivals, and debate leagues.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {[
             { title: "Robotics & Automation Club", members: "120+ active", tag: "Innovation" },
             { title: "Debate & Leadership League", members: "80+ active", tag: "Governance" },
@@ -654,17 +654,17 @@ export default function Home() {
 
       {/* H. News & Events Magazine layout */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 mb-8 sm:mb-12">
           <div className="space-y-2">
             <span className="text-xs font-bold tracking-widest text-crimson dark:text-gold uppercase">Newsroom</span>
-            <h2 className="font-serif font-bold text-3xl sm:text-5xl text-navy-950 dark:text-white">Academic Journals & Notice Board</h2>
+            <h2 className="font-serif font-bold text-2xl sm:text-4xl lg:text-5xl text-navy-950 dark:text-white">Journals & Notice Board</h2>
           </div>
           <Link href="/notices" className="flex items-center gap-2 text-sm font-bold text-crimson dark:text-gold hover:underline">
             All Notices & Circulars <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
           {news.map((item, idx) => (
             <div key={idx} className="glass-card p-6 rounded-2xl flex flex-col justify-between hover:border-crimson dark:hover:border-gold transition-colors duration-300">
               <div className="space-y-4">
@@ -694,11 +694,11 @@ export default function Home() {
 
       {/* I. Testimonials slider */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass-panel p-8 sm:p-12 rounded-3xl text-center space-y-6 relative overflow-hidden shadow-2xl">
+        <div className="glass-panel p-5 sm:p-10 lg:p-12 rounded-3xl text-center space-y-4 sm:space-y-6 relative overflow-hidden shadow-2xl">
           <span className="text-xs font-bold tracking-widest text-crimson dark:text-gold uppercase">Scholars Stories</span>
           
           <div className="max-w-2xl mx-auto">
-            <p className="text-lg sm:text-xl font-medium text-slate-800 dark:text-slate-200 italic leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl font-medium text-slate-800 dark:text-slate-200 italic leading-relaxed">
               &ldquo;{testimonials[activeTestimonial].text}&rdquo;
             </p>
             <div className="mt-6">
@@ -726,13 +726,13 @@ export default function Home() {
 
       {/* J. International Collaboration */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass-panel p-8 rounded-3xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div className="glass-panel p-5 sm:p-8 rounded-3xl grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center">
           <div className="space-y-6">
             <span className="text-xs font-bold tracking-widest text-crimson dark:text-gold uppercase flex items-center gap-2">
               <Globe className="w-4 h-4" /> Global Footprint
             </span>
-            <h2 className="font-serif font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white leading-tight">
-              International Exchange Partnerships
+            <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-white leading-tight">
+              International Partnerships
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
               IUS maintains active academic credit transfers and research collaborations with elite academic institutes across Europe, Scandinavia, and North America. Double-degree options are available in CSE and BBA.
@@ -764,20 +764,20 @@ export default function Home() {
 
       {/* K. CTA Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl overflow-hidden py-16 px-8 md:px-16 text-center space-y-6 bg-gradient-to-r from-crimson-hover via-crimson to-indigo-950 text-white shadow-2xl">
+        <div className="relative rounded-3xl overflow-hidden py-10 sm:py-16 px-5 sm:px-8 md:px-16 text-center space-y-4 sm:space-y-6 bg-gradient-to-r from-crimson-hover via-crimson to-indigo-950 text-white shadow-2xl">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2))] z-0" />
           <div className="relative z-10 max-w-2xl mx-auto space-y-6">
-            <h2 className="font-serif font-bold text-3xl sm:text-5xl tracking-tight leading-tight">
+            <h2 className="font-serif font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">
               Start Your Future at the University of Scholars
             </h2>
             <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
               Enroll today in our Fall 2026 admission cohort and gain access to modern scholarship funding schemes and global career pathways.
             </p>
-            <div className="pt-2 flex justify-center gap-4 flex-wrap">
-              <Link href="/admission" className="px-8 py-3.5 rounded-xl bg-white text-crimson hover:bg-slate-100 text-base font-extrabold shadow-lg hover:scale-105 active:scale-95 transition-all duration-200">
+            <div className="pt-2 flex flex-col xs:flex-row justify-center gap-3 flex-wrap">
+              <Link href="/admission" className="px-6 py-3 rounded-xl bg-white text-crimson hover:bg-slate-100 text-sm sm:text-base font-extrabold shadow-lg hover:scale-105 active:scale-95 transition-all duration-200">
                 Enroll Now
               </Link>
-              <Link href="/contact" className="px-8 py-3.5 rounded-xl bg-transparent border border-white/30 hover:border-white text-white text-base font-extrabold hover:bg-white/10 transition-colors">
+              <Link href="/contact" className="px-6 py-3 rounded-xl bg-transparent border border-white/30 hover:border-white text-white text-sm sm:text-base font-extrabold hover:bg-white/10 transition-colors">
                 Contact Advisors
               </Link>
             </div>
@@ -803,7 +803,7 @@ export default function Home() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 15 }}
               transition={{ type: "spring", duration: 0.4 }}
-              className="relative w-full max-w-2xl max-h-[85vh] overflow-hidden rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl z-10 border border-gold/20 dark:border-gold/10 bg-[#fdfbf7] dark:bg-[#111622] text-left flex flex-col"
+              className="relative w-full max-w-2xl max-h-[88vh] overflow-hidden rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 shadow-2xl z-10 border border-gold/20 dark:border-gold/10 bg-[#fdfbf7] dark:bg-[#111622] text-left flex flex-col"
             >
               {/* Close Button - Custom cross */}
               <button

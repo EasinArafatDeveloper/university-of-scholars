@@ -176,7 +176,7 @@ export default function Admission() {
     <div className="relative">
 
       {/* ── HERO ── */}
-      <section className="relative bg-gradient-to-br from-navy-950 via-[#1a0d1e] to-[#0d1529] overflow-hidden py-20 lg:py-28">
+      <section className="relative bg-gradient-to-br from-navy-950 via-[#1a0d1e] to-[#0d1529] overflow-hidden py-16 lg:py-28">
         {/* Ambient glows */}
         <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-[120px] bg-crimson/15 pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full blur-[120px] bg-gold/10 pointer-events-none" />
@@ -191,7 +191,7 @@ export default function Admission() {
               </span>
               Admissions Open — Spring 2026
             </div>
-            <h1 className="font-serif font-extrabold text-4xl sm:text-6xl text-white leading-[1.05] tracking-tight">
+            <h1 className="font-serif font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight">
               Join the University{" "}
               <span className="bg-gradient-to-r from-gold via-amber-300 to-gold bg-clip-text text-transparent">
                 of Scholars
@@ -214,7 +214,7 @@ export default function Admission() {
 
         {/* Stats row */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { label: "Programs Offered", value: "7+", icon: GraduationCap },
               { label: "Min. Combined GPA", value: "6.00", icon: BadgeCheck },
@@ -550,7 +550,7 @@ export default function Admission() {
           </div>
 
           {/* Tab Selector */}
-          <div className="flex gap-2 p-1.5 bg-slate-100 dark:bg-slate-900 rounded-2xl w-fit">
+          <div className="flex flex-wrap gap-2 p-1.5 bg-slate-100 dark:bg-slate-900 rounded-2xl w-fit">
             <button
               onClick={() => setActiveTab("local")}
               className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === "local" ? "bg-crimson text-white shadow-md" : "text-slate-600 dark:text-slate-400 hover:bg-white/60 dark:hover:bg-slate-800"}`}
@@ -749,7 +749,7 @@ export default function Admission() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
-                  className={`p-6 rounded-2xl bg-gradient-to-b ${s.color} border space-y-4 hover:-translate-y-1 hover:shadow-xl transition-all duration-300`}
+                  className={`p-4 sm:p-6 rounded-2xl bg-gradient-to-b ${s.color} border space-y-4 hover:-translate-y-1 hover:shadow-xl transition-all duration-300`}
                 >
                   <div className="flex items-start justify-between">
                     <div className={`p-2.5 rounded-xl ${s.iconColor} bg-white/30 dark:bg-black/20`}>
